@@ -3,1505 +3,736 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Green Life Home Health Care | Leading The Way To Better Health</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<title>Green Life Home Health Care | Revitalize Your Health</title>
+<meta name="description" content="Green Life Home Health Care - Professional 24/7 home healthcare services in Tamil Nadu. Nursing, Physiotherapy, ICU Setup, Doctor Visits at Home.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
 <style>
-:root {
-  --leaf: #3a8c3f;
-  --leaf-dark: #2d6e31;
-  --leaf-light: #5cb85c;
-  --leaf-pale: #e8f5e9;
-  --leaf-mint: #c8e6c9;
-  --white: #ffffff;
-  --off-white: #f9fffe;
-  --green-glass: rgba(58,140,63,0.08);
-  --green-glow: rgba(58,140,63,0.18);
-  --text-dark: #1a2e1b;
-  --text-mid: #3d5c3e;
-  --text-light: #6b8f6c;
-  --shadow-green: 0 20px 60px rgba(58,140,63,0.15);
-  --shadow-soft: 0 8px 32px rgba(0,0,0,0.08);
-  --gold-accent: #a8d5a2;
-  --radius: 20px;
-  --radius-lg: 32px;
+:root{
+  --g:#3a8c3f;--gd:#2d6e31;--gl:#5cb85c;--gp:#e8f5e9;--gm:#c8e6c9;
+  --w:#fff;--ow:#f9fffe;--td:#1a2e1b;--tm:#3d5c3e;--tl:#6b8f6c;
+  --r:20px;--rl:32px;
+  --sg:0 20px 60px rgba(58,140,63,0.15);--ss:0 8px 32px rgba(0,0,0,0.08);
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--w);color:var(--td);overflow-x:hidden}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* PROGRESS */
+#sp{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--g),var(--gl),#8bc34a);z-index:9999;width:0%;box-shadow:0 0 10px var(--gl)}
 
-html { scroll-behavior: smooth; }
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:0 5%;transition:all .4s}
+nav.sc{background:rgba(255,255,255,.97);backdrop-filter:blur(20px);box-shadow:0 2px 30px rgba(58,140,63,.12)}
+.ni{display:flex;align-items:center;justify-content:space-between;height:80px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-img{width:52px;height:52px;object-fit:contain;border-radius:12px;background:linear-gradient(135deg,var(--g),var(--gd));display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.ln{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--gd);line-height:1.1}
+.ls{font-size:9px;font-weight:500;color:var(--tl);letter-spacing:.12em;text-transform:uppercase}
+.nl{display:flex;align-items:center;gap:4px;list-style:none}
+.nl a{text-decoration:none;font-size:13px;font-weight:500;color:var(--tm);padding:8px 13px;border-radius:50px;transition:all .3s}
+.nl a:hover{color:var(--g);background:var(--gp)}
+.nc{background:linear-gradient(135deg,var(--g),var(--gd))!important;color:#fff!important;padding:10px 22px!important;border-radius:50px!important;box-shadow:0 4px 15px rgba(58,140,63,.3)}
+.nc:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(58,140,63,.4)!important}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border-radius:8px;border:none;background:none}
+.hbg span{display:block;width:24px;height:2px;background:var(--gd);transition:all .3s;border-radius:2px}
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--white);
-  color: var(--text-dark);
-  overflow-x: hidden;
-  cursor: none;
-}
+/* POPUP */
+#popup{position:fixed;inset:0;z-index:99997;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .5s}
+#popup.show{opacity:1;pointer-events:all}
+.pop-bg{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px)}
+.pop-box{position:relative;z-index:1;background:#fff;border-radius:28px;padding:48px 40px;max-width:500px;width:90%;animation:popIn .5s cubic-bezier(.34,1.56,.64,1) both;box-shadow:0 40px 80px rgba(0,0,0,.3)}
+.pop-close{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;border:none;background:var(--gp);color:var(--g);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.pop-close:hover{background:var(--g);color:#fff}
+@keyframes popIn{from{transform:scale(.8) translateY(30px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+.pop-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gp);border:1px solid var(--gm);padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;color:var(--gd);margin-bottom:16px}
+.pop-badge::before{content:'';width:8px;height:8px;background:var(--gl);border-radius:50%;animation:pulse 2s infinite}
+.pop-box h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--td);margin-bottom:8px}
+.pop-box p{font-size:14px;color:var(--tl);line-height:1.6;margin-bottom:24px}
+.pop-form{display:flex;flex-direction:column;gap:12px}
+.pop-form input,.pop-form select{width:100%;padding:14px 18px;border:2px solid var(--gm);border-radius:14px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--td);outline:none;transition:border-color .3s}
+.pop-form input:focus,.pop-form select:focus{border-color:var(--g)}
+.pop-btn{background:linear-gradient(135deg,var(--g),var(--gd));color:#fff;padding:16px;border:none;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 8px 25px rgba(58,140,63,.35)}
+.pop-btn:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(58,140,63,.45)}
+.pop-skip{display:block;text-align:center;margin-top:12px;font-size:12px;color:var(--tl);cursor:pointer;transition:color .3s}
+.pop-skip:hover{color:var(--g)}
+.pop-features{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.pop-feat{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--tm);font-weight:500}
+.pop-feat::before{content:'✓';color:var(--g);font-weight:700}
 
-/* === CUSTOM CURSOR === */
-.cursor {
-  width: 12px; height: 12px;
-  background: var(--leaf);
-  border-radius: 50%;
-  position: fixed; top: 0; left: 0;
-  pointer-events: none; z-index: 99999;
-  transform: translate(-50%,-50%);
-  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
-  mix-blend-mode: multiply;
-}
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 2px solid var(--leaf);
-  border-radius: 50%;
-  position: fixed; top: 0; left: 0;
-  pointer-events: none; z-index: 99998;
-  transform: translate(-50%,-50%);
-  transition: transform 0.15s ease, width 0.3s, height 0.3s, border-color 0.3s;
-  opacity: 0.6;
-}
-.cursor.expand { width: 20px; height: 20px; background: var(--leaf-light); }
-.cursor-ring.expand { width: 56px; height: 56px; border-color: var(--leaf-light); }
+/* SERVICE DETAIL MODAL */
+#svcModal{position:fixed;inset:0;z-index:99998;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
+#svcModal.show{opacity:1;pointer-events:all}
+.svc-modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px)}
+.svc-modal-box{position:relative;z-index:1;background:#fff;border-radius:28px;max-width:760px;width:93%;max-height:90vh;overflow-y:auto;animation:popIn .4s cubic-bezier(.34,1.56,.64,1) both;box-shadow:0 40px 80px rgba(0,0,0,.3)}
+.svc-modal-box::-webkit-scrollbar{width:6px}
+.svc-modal-box::-webkit-scrollbar-track{background:var(--gp)}
+.svc-modal-box::-webkit-scrollbar-thumb{background:var(--g);border-radius:3px}
+.svc-modal-header{background:linear-gradient(135deg,var(--g),var(--gd));padding:36px 40px 32px;border-radius:28px 28px 0 0;position:relative;overflow:hidden}
+.svc-modal-header::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%}
+.svc-modal-header::after{content:'';position:absolute;bottom:-40px;left:-40px;width:150px;height:150px;background:rgba(255,255,255,.04);border-radius:50%}
+.svc-modal-close{position:absolute;top:20px;right:20px;width:38px;height:38px;border-radius:50%;border:2px solid rgba(255,255,255,.3);background:rgba(255,255,255,.15);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;z-index:2}
+.svc-modal-close:hover{background:rgba(255,255,255,.3)}
+.svc-modal-icon{font-size:52px;margin-bottom:12px;position:relative;z-index:1}
+.svc-modal-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;position:relative;z-index:1}
+.svc-modal-title{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,32px);font-weight:900;color:#fff;margin-bottom:8px;position:relative;z-index:1}
+.svc-modal-subtitle{font-size:14px;color:rgba(255,255,255,.8);line-height:1.6;position:relative;z-index:1;max-width:520px}
+.svc-modal-body{padding:36px 40px}
+.svc-modal-desc{font-size:15px;line-height:1.8;color:var(--tl);margin-bottom:28px}
+.svc-modal-checks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:32px}
+.svc-chk{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--td);background:var(--gp);border:1px solid var(--gm);padding:10px 14px;border-radius:12px}
+.svc-chk::before{content:'✓';width:22px;height:22px;background:var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+.svc-modal-steps{margin-bottom:32px}
+.svc-modal-steps h4{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--td);margin-bottom:16px}
+.svc-step{display:flex;gap:14px;margin-bottom:16px;padding:16px;background:var(--ow);border-radius:14px;border:1px solid var(--gm)}
+.svc-step-num{width:36px;height:36px;background:linear-gradient(135deg,var(--g),var(--gd));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-weight:900;color:#fff;flex-shrink:0}
+.svc-step-info h5{font-size:14px;font-weight:700;color:var(--td);margin-bottom:3px}
+.svc-step-info p{font-size:12px;color:var(--tl);line-height:1.5}
+.svc-why{margin-bottom:32px}
+.svc-why h4{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--td);margin-bottom:16px}
+.svc-why-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.svc-why-item{padding:16px;background:var(--gp);border-radius:14px;border:1px solid var(--gm)}
+.svc-why-emoji{font-size:24px;margin-bottom:8px}
+.svc-why-title{font-size:13px;font-weight:700;color:var(--td);margin-bottom:4px}
+.svc-why-desc{font-size:12px;color:var(--tl);line-height:1.5}
+.svc-improve{margin-bottom:32px}
+.svc-improve h4{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--td);margin-bottom:16px}
+.svc-improve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.svc-improve-item{padding:14px;background:#fff;border:1px solid var(--gm);border-radius:12px;text-align:center;box-shadow:0 2px 10px rgba(58,140,63,.06)}
+.svc-improve-emoji{font-size:28px;margin-bottom:6px}
+.svc-improve-title{font-size:12px;font-weight:700;color:var(--td);margin-bottom:3px}
+.svc-improve-desc{font-size:11px;color:var(--tl);line-height:1.4}
+.svc-modal-actions{display:flex;gap:12px;flex-wrap:wrap}
+.svc-modal-wa{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--g),var(--gd));color:#fff;padding:16px 24px;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 8px 25px rgba(58,140,63,.35);transition:all .3s;min-width:180px}
+.svc-modal-wa:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(58,140,63,.45)}
+.svc-modal-call{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:var(--gd);padding:16px 24px;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;border:2px solid var(--gm);transition:all .3s;min-width:140px}
+.svc-modal-call:hover{border-color:var(--g);background:var(--gp)}
 
-/* === SCROLL PROGRESS === */
-.scroll-progress {
-  position: fixed; top: 0; left: 0; height: 3px;
-  background: linear-gradient(90deg, var(--leaf), var(--leaf-light), #8bc34a);
-  z-index: 9999; width: 0%;
-  transition: width 0.1s;
-  box-shadow: 0 0 10px var(--leaf-light);
-}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:100px 5% 60px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+/* Hero background: South Indian home with nurse */
+.hero-bg-img{width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.18}
+.hero-bg-overlay{position:absolute;inset:0;background:linear-gradient(135deg,#f0fdf4 0%,rgba(240,253,244,.92) 40%,rgba(255,255,255,.75) 70%,rgba(240,253,244,.85) 100%)}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(92,184,92,.12),transparent 70%);border-radius:50%;animation:blob 8s ease-in-out infinite;z-index:1}
+.hero::after{content:'';position:absolute;bottom:-150px;left:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(58,140,63,.08),transparent 70%);border-radius:50%;animation:blob 10s ease-in-out infinite reverse;z-index:1}
+@keyframes blob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.05)}66%{transform:translate(-20px,30px) scale(.95)}}
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.particle{position:absolute;width:6px;height:6px;background:var(--gm);border-radius:50%;animation:pf linear infinite;opacity:0}
+@keyframes pf{0%{transform:translateY(100vh);opacity:0}10%{opacity:.6}90%{opacity:.3}100%{transform:translateY(-100px);opacity:0}}
+.hc{flex:1;max-width:600px;position:relative;z-index:2}
+.hbadge{display:inline-flex;align-items:center;gap:8px;background:rgba(58,140,63,.1);border:1px solid rgba(58,140,63,.2);padding:8px 16px;border-radius:50px;font-size:13px;font-weight:600;color:var(--gd);margin-bottom:24px;animation:fsu .8s ease .2s both}
+.hbadge span{width:8px;height:8px;background:var(--gl);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.7}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,62px);font-weight:900;line-height:1.08;color:var(--td);margin-bottom:8px;animation:fsu .8s ease .3s both}
+.hero h1 span{background:linear-gradient(135deg,var(--g),var(--gl),#8bc34a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-tag{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,21px);font-style:italic;color:var(--tl);margin-bottom:20px;animation:fsu .8s ease .4s both}
+.hsc{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:var(--tm);margin-bottom:32px;animation:fsu .8s ease .5s both;min-height:30px}
+.tc{color:var(--g);min-width:200px;transition:all .4s}
+.hdesc{font-size:15px;line-height:1.75;color:var(--tl);margin-bottom:36px;animation:fsu .8s ease .6s both}
+.hbtns{display:flex;gap:14px;flex-wrap:wrap;animation:fsu .8s ease .7s both}
+.btn1{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--g),var(--gd));color:#fff;padding:16px 32px;border-radius:50px;font-size:15px;font-weight:600;text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 30px rgba(58,140,63,.35);transition:all .4s;position:relative;overflow:hidden}
+.btn1::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.2),transparent);opacity:0;transition:opacity .3s}
+.btn1:hover::before{opacity:1}
+.btn1:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(58,140,63,.45)}
+.btn2{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--gd);padding:16px 32px;border-radius:50px;font-size:15px;font-weight:600;text-decoration:none;border:2px solid var(--gm);transition:all .4s}
+.btn2:hover{border-color:var(--g);background:var(--gp);transform:translateY(-2px)}
+@keyframes fsu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
-/* === NAVBAR === */
-nav {
-  position: fixed; top: 0; width: 100%; z-index: 1000;
-  padding: 0 5%;
-  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
-}
-nav.scrolled {
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 2px 30px rgba(58,140,63,0.12);
-  padding: 0 5%;
-}
-.nav-inner {
-  display: flex; align-items: center; justify-content: space-between;
-  height: 80px;
-}
-.logo {
-  display: flex; align-items: center; gap: 12px;
-  text-decoration: none;
-}
-.logo-icon {
-  width: 48px; height: 48px;
-  background: linear-gradient(135deg, var(--leaf), var(--leaf-light));
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px;
-  box-shadow: 0 4px 15px rgba(58,140,63,0.3);
-  position: relative; overflow: hidden;
-}
-.logo-icon::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.3));
-}
-.logo-text { display: flex; flex-direction: column; }
-.logo-main {
-  font-family: 'Playfair Display', serif;
-  font-size: 18px; font-weight: 700;
-  color: var(--leaf-dark);
-  line-height: 1.1;
-}
-.logo-sub {
-  font-size: 10px; font-weight: 500;
-  color: var(--text-light); letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.nav-links {
-  display: flex; align-items: center; gap: 6px;
-  list-style: none;
-}
-.nav-links a {
-  text-decoration: none;
-  font-size: 14px; font-weight: 500;
-  color: var(--text-mid);
-  padding: 8px 14px;
-  border-radius: 50px;
-  transition: all 0.3s;
-  position: relative;
-}
-.nav-links a:hover {
-  color: var(--leaf);
-  background: var(--leaf-pale);
-}
-.nav-cta {
-  background: linear-gradient(135deg, var(--leaf), var(--leaf-dark)) !important;
-  color: white !important;
-  padding: 10px 22px !important;
-  border-radius: 50px !important;
-  box-shadow: 0 4px 15px rgba(58,140,63,0.3);
-  transition: all 0.3s !important;
-}
-.nav-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(58,140,63,0.4) !important;
-  background: var(--white) !important;
-  color: var(--leaf) !important;
-  border: 2px solid var(--leaf);
-}
+/* HERO VISUAL */
+.hv{flex:1;display:flex;justify-content:center;align-items:center;position:relative;z-index:2;animation:fsr 1s ease .5s both}
+@keyframes fsr{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:translateX(0)}}
+.hcs{position:relative;width:420px;height:500px}
+.hmain{position:absolute;background:linear-gradient(145deg,#1a4d1e,#2d6e31);border-radius:var(--rl);width:360px;height:440px;top:30px;left:30px;overflow:hidden;box-shadow:var(--sg);display:flex;flex-direction:column;justify-content:flex-end;padding:32px}
 
-/* === HERO === */
-.hero {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 30%, #ffffff 60%, #f0fdf4 100%);
-  display: flex; align-items: center;
-  position: relative; overflow: hidden;
-  padding: 100px 5% 60px;
-}
+/* Hero main card - uses placeholder image from images/hero/ folder */
+.hero-main-img{position:absolute;top:0;left:0;right:0;bottom:80px;object-fit:cover;width:100%;height:calc(100% - 80px);opacity:.9;border-radius:var(--rl) var(--rl) 0 0}
+/* Fallback if image not loaded */
+.hero-main-fallback{position:absolute;top:0;left:0;right:0;bottom:80px;width:100%;height:calc(100% - 80px);border-radius:var(--rl) var(--rl) 0 0;background:linear-gradient(135deg,#1a5c20 0%,#2d8a35 30%,#1a4d1e 60%,#0f3012 100%);display:flex;align-items:center;justify-content:center;font-size:100px}
+.clabel{position:relative;z-index:2;color:#fff;font-size:12px;font-weight:600;opacity:.8;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.ctitle{color:#fff;font-family:'Playfair Display',serif;font-size:21px;font-weight:700;position:relative;z-index:2}
+.sc2{position:absolute;background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 8px 30px rgba(0,0,0,.12);display:flex;align-items:center;gap:10px}
+.sc2-1{top:0;left:0;animation:cf 5s ease-in-out infinite}
+.sc2-2{bottom:10px;right:0;animation:cf 6s ease-in-out 1s infinite}
+.sc2-3{top:50%;left:-20px;transform:translateY(-50%);animation:cf3 4.5s ease-in-out .5s infinite}
+@keyframes cf{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes cf3{0%,100%{transform:translateY(-50%)}50%{transform:translateY(calc(-50% - 10px))}}
+.si{width:40px;height:40px;background:var(--gp);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.sn{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--td)}
+.sl{font-size:11px;color:var(--tl)}
+.avb{position:absolute;top:20px;right:20px;background:rgba(92,184,92,.9);color:#fff;padding:8px 14px;border-radius:50px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:6px;z-index:10}
+.avb span{width:8px;height:8px;background:#fff;border-radius:50%;animation:pulse 1.5s infinite}
 
-/* Animated background blobs */
-.hero::before {
-  content: '';
-  position: absolute; top: -200px; right: -200px;
-  width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(92,184,92,0.12) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: blobFloat 8s ease-in-out infinite;
-}
-.hero::after {
-  content: '';
-  position: absolute; bottom: -150px; left: -150px;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(58,140,63,0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: blobFloat 10s ease-in-out infinite reverse;
-}
-@keyframes blobFloat {
-  0%, 100% { transform: translate(0,0) scale(1); }
-  33% { transform: translate(30px,-20px) scale(1.05); }
-  66% { transform: translate(-20px,30px) scale(0.95); }
-}
+/* STATS BAR */
+.sb{background:var(--gd);padding:28px 5%;position:relative;overflow:hidden}
+.sb::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1100px;margin:0 auto}
+.si2{text-align:center;position:relative;z-index:1}
+.sn2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:900;color:#fff;margin-bottom:4px;line-height:1}
+.sl2{font-size:13px;color:rgba(255,255,255,.7);font-weight:500}
 
-/* Floating particles */
-.particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-.particle {
-  position: absolute; width: 6px; height: 6px;
-  background: var(--leaf-mint); border-radius: 50%;
-  animation: particleFloat linear infinite;
-  opacity: 0;
-}
-@keyframes particleFloat {
-  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.6; }
-  90% { opacity: 0.3; }
-  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-}
+/* ABOUT */
+.about{padding:100px 5%;background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+.about-img-wrap{position:relative}
+/* About image: images/hero/about-team.jpg - South Indian nurse team */
+.about-img{width:100%;height:450px;object-fit:cover;border-radius:var(--rl);box-shadow:var(--sg);display:block}
+.about-img-fallback{width:100%;height:450px;border-radius:var(--rl);box-shadow:var(--sg);background:linear-gradient(145deg,#1a4d1e,var(--gd));display:flex;align-items:center;justify-content:center;font-size:100px}
+.about-badge{position:absolute;bottom:-20px;right:-20px;background:#fff;border-radius:var(--r);padding:20px 24px;box-shadow:var(--sg);border:2px solid var(--gm)}
+.about-badge-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--g);line-height:1}
+.about-badge-txt{font-size:12px;color:var(--tl);font-weight:500}
+.about-content{display:flex;flex-direction:column;gap:24px}
+.section-chip{display:inline-flex;align-items:center;gap:8px;background:var(--gp);border:1px solid var(--gm);padding:8px 16px;border-radius:50px;font-size:12px;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.about-content h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,42px);font-weight:900;color:var(--td);line-height:1.2}
+.about-content p{font-size:15px;line-height:1.8;color:var(--tl)}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.af{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--tm)}
+.af::before{content:'✓';width:22px;height:22px;background:var(--gp);border:1px solid var(--gm);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--g);flex-shrink:0}
 
-/* Leaf decorations */
-.leaf-deco {
-  position: absolute;
-  opacity: 0.08;
-  font-size: 120px;
-  animation: leafSway 6s ease-in-out infinite;
-  pointer-events: none;
-}
-@keyframes leafSway {
-  0%, 100% { transform: rotate(-10deg) scale(1); }
-  50% { transform: rotate(10deg) scale(1.1); }
-}
+/* SECTION BASE */
+section{padding:90px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.sh{text-align:center;margin-bottom:60px}
+.sh h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,44px);font-weight:900;color:var(--td);margin-bottom:12px}
+.sh p{font-size:15px;color:var(--tl);max-width:600px;margin:0 auto;line-height:1.7}
 
-.hero-content {
-  flex: 1; max-width: 600px; position: relative; z-index: 2;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(58,140,63,0.1);
-  border: 1px solid rgba(58,140,63,0.2);
-  padding: 8px 16px; border-radius: 50px;
-  font-size: 13px; font-weight: 600;
-  color: var(--leaf-dark);
-  margin-bottom: 24px;
-  animation: fadeSlideUp 0.8s ease 0.2s both;
-}
-.badge-dot {
-  width: 8px; height: 8px; background: var(--leaf-light);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:0.7} }
+/* SERVICES */
+.services{background:linear-gradient(135deg,#f0fdf4,#e8f5e9 50%,#f9fffe)}
+.svgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.svc{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--ss);border:1px solid var(--gm);transition:all .4s;cursor:pointer;position:relative}
+.svc:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(58,140,63,.2);border-color:var(--gl)}
 
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(38px,5vw,64px);
-  font-weight: 900; line-height: 1.08;
-  color: var(--text-dark);
-  margin-bottom: 8px;
-  animation: fadeSlideUp 0.8s ease 0.3s both;
-}
-.hero h1 span {
-  background: linear-gradient(135deg, var(--leaf), var(--leaf-light), #8bc34a);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: relative;
-}
-.hero-tagline {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(16px,2.5vw,22px);
-  font-style: italic;
-  color: var(--text-light);
-  margin-bottom: 20px;
-  animation: fadeSlideUp 0.8s ease 0.4s both;
-}
+/* Service images - place actual photos in images/services/ folder */
+.svc-img-wrap{width:100%;height:200px;overflow:hidden;position:relative}
+.svc-img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .5s}
+.svc:hover .svc-img{transform:scale(1.06)}
+/* Fallback placeholder if image missing */
+.svc-img-ph{width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:64px;transition:transform .5s}
+.svc:hover .svc-img-ph{transform:scale(1.05)}
+.svc-img-badge{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.95);backdrop-filter:blur(4px);border-radius:50px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--gd);border:1px solid var(--gm)}
+.svc-body{padding:24px}
+.svc-tag{display:inline-block;background:var(--gp);color:var(--g);font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;margin-bottom:10px;border:1px solid var(--gm);text-transform:uppercase;letter-spacing:.06em}
+.svc h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--td);margin-bottom:8px}
+.svc p{font-size:13px;color:var(--tl);line-height:1.65;margin-bottom:14px}
+.svc-list{list-style:none;margin-bottom:16px;display:flex;flex-direction:column;gap:5px}
+.svc-list li{font-size:12px;color:var(--tm);display:flex;align-items:flex-start;gap:6px;line-height:1.4}
+.svc-list li::before{content:'•';color:var(--g);font-weight:900;flex-shrink:0}
+.svc-actions{display:flex;gap:8px}
+.svc-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--g),var(--gd));color:#fff;padding:12px 20px;border-radius:50px;font-size:13px;font-weight:600;text-decoration:none;border:none;cursor:pointer;flex:1;transition:all .3s;box-shadow:0 4px 15px rgba(58,140,63,.3)}
+.svc-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(58,140,63,.45)}
+.svc-detail-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:var(--gp);color:var(--gd);padding:12px 16px;border-radius:50px;font-size:12px;font-weight:600;border:1px solid var(--gm);cursor:pointer;transition:all .3s;white-space:nowrap}
+.svc-detail-btn:hover{background:var(--gm);border-color:var(--g)}
 
-/* Animated text cycler */
-.hero-animated-text {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 18px; font-weight: 600;
-  color: var(--text-mid);
-  margin-bottom: 32px;
-  animation: fadeSlideUp 0.8s ease 0.5s both;
-  min-height: 30px;
-}
-.text-cycle {
-  color: var(--leaf);
-  position: relative; overflow: hidden;
-  min-width: 220px;
-}
-.text-cycle span {
-  display: block;
-  animation: textSlide 12s infinite;
-}
-@keyframes textSlide {
-  0%,16%{ transform:translateY(0); opacity:1; }
-  20%,36%{ transform:translateY(-100%); opacity:0; }
-  40%,56%{ transform:translateY(-200%); opacity:0; }
-  60%,76%{ transform:translateY(-300%); opacity:0; }
-  80%,96%{ transform:translateY(-400%); opacity:0; }
-  100%{ transform:translateY(0); opacity:1; }
-}
+/* DOCTORS */
+.doctors{background:#fff}
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px}
+.doc-card{background:linear-gradient(145deg,#f9fffe,#f0fdf4);border-radius:var(--rl);padding:32px 24px;text-align:center;border:1px solid var(--gm);transition:all .4s;position:relative;overflow:hidden}
+.doc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(145deg,transparent,rgba(58,140,63,.03));opacity:0;transition:opacity .4s}
+.doc-card:hover::before{opacity:1}
+.doc-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(58,140,63,.15);border-color:var(--gl)}
+.doc-avatar{width:100px;height:100px;border-radius:50%;margin:0 auto 16px;position:relative;border:4px solid #fff;box-shadow:0 8px 25px rgba(58,140,63,.2)}
+.doc-avatar-ph{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--gd));display:flex;align-items:center;justify-content:center;font-size:44px}
+.doc-badge{position:absolute;bottom:2px;right:2px;width:24px;height:24px;background:var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;border:2px solid #fff}
+.doc-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--td);margin-bottom:4px}
+.doc-role{font-size:13px;color:var(--g);font-weight:600;margin-bottom:4px}
+.doc-exp{font-size:12px;color:var(--tl);margin-bottom:14px}
+.doc-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:16px}
+.doc-tag{background:var(--gp);color:var(--tm);font-size:10px;font-weight:600;padding:4px 10px;border-radius:50px;border:1px solid var(--gm)}
+.doc-btn{display:inline-flex;align-items:center;gap:6px;background:var(--g);color:#fff;padding:10px 20px;border-radius:50px;font-size:13px;font-weight:600;text-decoration:none;transition:all .3s;cursor:pointer;border:none}
+.doc-btn:hover{background:var(--gd);transform:translateY(-2px)}
 
-.hero-desc {
-  font-size: 16px; line-height: 1.7;
-  color: var(--text-light);
-  margin-bottom: 40px;
-  animation: fadeSlideUp 0.8s ease 0.6s both;
-}
+/* GALLERY */
+.gallery{background:linear-gradient(135deg,#f0fdf4,#e8f5e9)}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gal-item{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;aspect-ratio:4/3}
+.gal-item:first-child{grid-column:span 2;aspect-ratio:16/9}
+/* Gallery images from images/gallery/ folder */
+.gal-img{width:100%;height:100%;object-fit:cover;transition:transform .5s;display:block}
+.gal-item:hover .gal-img{transform:scale(1.07)}
+/* Fallback if image not present */
+.gal-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(145deg,var(--gp),var(--gm));transition:transform .5s}
+.gal-item:hover .gal-ph{transform:scale(1.05)}
+.gal-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(29,77,30,.85),transparent 60%);opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:20px}
+.gal-item:hover .gal-overlay{opacity:1}
+.gal-caption{color:#fff;font-size:14px;font-weight:600}
+.gal-caption-small{color:#fff;font-size:12px;opacity:.8;display:block;margin-top:2px}
 
-.hero-buttons {
-  display: flex; gap: 16px; flex-wrap: wrap;
-  animation: fadeSlideUp 0.8s ease 0.7s both;
-}
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: linear-gradient(135deg, var(--leaf), var(--leaf-dark));
-  color: white;
-  padding: 16px 32px; border-radius: 50px;
-  font-size: 15px; font-weight: 600;
-  text-decoration: none; border: none; cursor: none;
-  box-shadow: 0 8px 30px rgba(58,140,63,0.35);
-  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
-  position: relative; overflow: hidden;
-}
-.btn-primary::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
-  opacity: 0; transition: opacity 0.3s;
-}
-.btn-primary:hover::before { opacity: 1; }
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(58,140,63,0.45);
-}
-.btn-secondary {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: white;
-  color: var(--leaf-dark);
-  padding: 16px 32px; border-radius: 50px;
-  font-size: 15px; font-weight: 600;
-  text-decoration: none; border: 2px solid var(--leaf-mint);
-  cursor: none;
-  transition: all 0.4s;
-}
-.btn-secondary:hover {
-  border-color: var(--leaf);
-  background: var(--leaf-pale);
-  transform: translateY(-2px);
-}
+/* PROCESS */
+.process{background:linear-gradient(135deg,#f0fdf4,#e8f5e9 50%,#f9fffe)}
+.psteps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.psteps::before{content:'';position:absolute;top:40px;left:calc(12.5% + 20px);right:calc(12.5% + 20px);height:2px;background:linear-gradient(90deg,var(--g),var(--gl));z-index:0}
+.pstep{text-align:center;position:relative;z-index:1;padding:0 8px;transition:transform .4s}
+.pstep:hover{transform:translateY(-8px)}
+.pnum{width:80px;height:80px;background:linear-gradient(135deg,var(--g),var(--gd));border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:#fff;box-shadow:0 8px 25px rgba(58,140,63,.35);border:4px solid #fff;position:relative}
+.pnum::after{content:'';position:absolute;inset:-6px;border:2px dashed var(--gm);border-radius:50%;animation:spin 20s linear infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.picon{position:absolute;top:-10px;right:-10px;width:28px;height:28px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.ptitle{font-size:16px;font-weight:700;color:var(--td);margin-bottom:8px}
+.pdesc{font-size:13px;color:var(--tl);line-height:1.6}
 
-/* Hero image side */
-.hero-visual {
-  flex: 1; display: flex; justify-content: center; align-items: center;
-  position: relative; z-index: 2;
-  animation: fadeSlideRight 1s ease 0.5s both;
-}
-@keyframes fadeSlideRight { from{opacity:0;transform:translateX(60px)} to{opacity:1;transform:translateX(0)} }
-@keyframes fadeSlideUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+/* REVIEWS */
+.reviews{background:#fff;overflow:hidden}
+.rtrack-wrap{overflow:hidden;position:relative;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.rtrack{display:flex;gap:20px;animation:scroll 35s linear infinite;width:max-content}
+.rtrack:hover{animation-play-state:paused}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.rcard{background:var(--ow);border-radius:var(--r);padding:26px;width:320px;flex-shrink:0;border:1px solid var(--gm);transition:all .4s;cursor:pointer}
+.rcard:hover{background:#fff;box-shadow:var(--ss);transform:translateY(-4px);border-color:var(--gl)}
+.rstars{color:#f59e0b;font-size:15px;margin-bottom:12px;letter-spacing:2px}
+.rtxt{font-size:13px;color:var(--tm);line-height:1.7;font-style:italic;margin-bottom:16px}
+.rinfo{display:flex;align-items:center;gap:10px}
+.ravatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gp),var(--gm));display:flex;align-items:center;justify-content:center;font-size:20px}
+.rname{font-weight:700;font-size:13px;color:var(--td)}
+.rplace{font-size:11px;color:var(--tl)}
+.gbadge{margin-left:auto;background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:3px 8px;font-size:10px;font-weight:700;color:#4285f4}
+.happy-strip{background:linear-gradient(135deg,var(--g),var(--gd));padding:28px 5%;text-align:center;position:relative;overflow:hidden}
+.happy-strip::before{content:'🎉';position:absolute;font-size:200px;opacity:.05;top:-40px;left:50%;transform:translateX(-50%)}
+.happy-num{font-family:'Playfair Display',serif;font-size:clamp(42px,6vw,72px);font-weight:900;color:#fff;line-height:1}
+.happy-label{font-size:16px;color:rgba(255,255,255,.8);font-weight:500;margin-top:8px}
+.happy-subtitle{font-size:13px;color:rgba(255,255,255,.6);margin-top:6px}
 
-.hero-card-stack {
-  position: relative; width: 420px; height: 500px;
-}
-.hero-main-card {
-  position: absolute;
-  background: linear-gradient(145deg, #1a4d1e, #2d6e31);
-  border-radius: var(--radius-lg);
-  width: 360px; height: 440px;
-  top: 30px; left: 30px;
-  overflow: hidden;
-  box-shadow: var(--shadow-green);
-  display: flex; flex-direction: column;
-  justify-content: flex-end; padding: 32px;
-}
-.hero-main-card::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='200' cy='180' r='120' fill='rgba(92,184,92,0.15)'/%3E%3Ccircle cx='200' cy='180' r='80' fill='rgba(92,184,92,0.1)'/%3E%3C/svg%3E") center/cover;
-}
-.nurse-illustration {
-  position: absolute; top: 0; left: 0; right: 0; bottom: 80px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 140px;
-  animation: nurseFloat 4s ease-in-out infinite;
-}
-@keyframes nurseFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+/* MAP */
+.map-sec{background:var(--gp);padding:80px 5%}
+.map-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;gap:60px;align-items:center}
+.map-info h2{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,38px);font-weight:900;color:var(--td);margin-bottom:16px}
+.map-info p{font-size:14px;color:var(--tl);line-height:1.7;margin-bottom:24px}
+.map-details{display:flex;flex-direction:column;gap:14px}
+.md{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--tm)}
+.md-icon{width:36px;height:36px;background:var(--g);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.map-embed{border-radius:var(--rl);overflow:hidden;box-shadow:var(--sg);height:400px}
+.map-embed iframe{width:100%;height:100%;border:none}
 
-.card-label {
-  position: relative; z-index: 2;
-  color: white;
-  font-size: 13px; font-weight: 600;
-  opacity: 0.8; letter-spacing: 0.1em;
-  text-transform: uppercase; margin-bottom: 6px;
-}
-.card-title {
-  color: white; font-family: 'Playfair Display', serif;
-  font-size: 22px; font-weight: 700;
-  position: relative; z-index: 2;
-}
+/* CONTACT */
+.contact{background:linear-gradient(135deg,#1a4d1e,var(--gd) 50%,#2d6e31);padding:90px 5%;position:relative;overflow:hidden}
+.contact::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E") repeat}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;position:relative;z-index:1;max-width:1200px;margin:0 auto}
+.contact h2{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,42px);font-weight:900;color:#fff;margin-bottom:16px}
+.contact-desc{font-size:15px;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:36px}
+.citems{display:flex;flex-direction:column;gap:16px}
+.citem{display:flex;align-items:center;gap:16px;padding:18px 20px;background:rgba(255,255,255,.08);border-radius:var(--r);border:1px solid rgba(255,255,255,.1);transition:all .3s;cursor:pointer;text-decoration:none}
+.citem:hover{background:rgba(255,255,255,.15);transform:translateX(6px)}
+.ci-icon{width:48px;height:48px;background:rgba(92,184,92,.25);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.ci-label{font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px}
+.ci-val{font-size:14px;color:#fff;font-weight:600}
+.fbox{background:#fff;border-radius:var(--rl);padding:40px}
+.fbox h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--td);margin-bottom:6px}
+.fbox p{font-size:13px;color:var(--tl);margin-bottom:24px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fl{font-size:12px;font-weight:600;color:var(--tm);text-transform:uppercase;letter-spacing:.06em}
+.fi,.fs,.ft{width:100%;padding:13px 16px;border:2px solid var(--gm);border-radius:14px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--td);outline:none;transition:border-color .3s;background:#fff}
+.fi:focus,.fs:focus,.ft:focus{border-color:var(--g)}
+.ft{min-height:100px;resize:vertical}
+.fsub{background:linear-gradient(135deg,var(--g),var(--gd));color:#fff;padding:16px;border:none;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 8px 25px rgba(58,140,63,.35);width:100%;margin-top:4px}
+.fsub:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(58,140,63,.45)}
 
-/* Floating stat cards */
-.stat-card {
-  position: absolute;
-  background: white;
-  border-radius: 16px;
-  padding: 16px 20px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-  display: flex; align-items: center; gap: 12px;
-  animation: cardFloat ease-in-out infinite;
-}
-.stat-card-1 { top: 0; left: 0; animation-duration: 5s; animation-delay: 0s; }
-.stat-card-2 { bottom: 10px; right: 0; animation-duration: 6s; animation-delay: 1s; }
-.stat-card-3 { top: 50%; left: -20px; transform: translateY(-50%); animation-duration: 4.5s; animation-delay: 0.5s; }
-@keyframes cardFloat {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-.stat-card-3 { animation-name: cardFloat3; }
-@keyframes cardFloat3 {
-  0%,100% { transform: translateY(-50%); }
-  50% { transform: translateY(calc(-50% - 10px)); }
-}
-.stat-icon {
-  width: 44px; height: 44px;
-  background: var(--leaf-pale);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px;
-}
-.stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px; font-weight: 700;
-  color: var(--text-dark);
-}
-.stat-label { font-size: 12px; color: var(--text-light); }
+/* FOOTER */
+footer{background:#0d1f0e;padding:60px 5% 0;color:rgba(255,255,255,.75)}
+.fg2{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto;padding-bottom:40px}
+.fb-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.fb-logo-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--g),var(--gd));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.fb-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff}
+.fb-sub{font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.1em}
+.fb-desc{font-size:13px;line-height:1.7;margin-bottom:20px}
+.fsoc{display:flex;gap:10px}
+.fsoc a{width:36px;height:36px;background:rgba(92,184,92,.15);border:1px solid rgba(92,184,92,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;text-decoration:none;transition:all .3s}
+.fsoc a:hover{background:var(--g);transform:translateY(-2px)}
+.fc h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:18px;letter-spacing:.05em}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fc a{text-decoration:none;font-size:13px;color:rgba(255,255,255,.6);transition:color .3s}
+.fc a:hover{color:var(--gl)}
+.fbot{border-top:1px solid rgba(255,255,255,.08);padding:20px 0;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.4);flex-wrap:wrap;gap:10px}
 
-/* Availability badge on card */
-.avail-badge {
-  position: absolute; top: 20px; right: 20px;
-  background: rgba(92,184,92,0.9);
-  color: white; padding: 8px 14px; border-radius: 50px;
-  font-size: 12px; font-weight: 700;
-  letter-spacing: 0.05em;
-  display: flex; align-items: center; gap: 6px;
-  backdrop-filter: blur(10px);
-  z-index: 10;
-}
-.avail-dot {
-  width: 8px; height: 8px;
-  background: white; border-radius: 50%;
-  animation: pulse 1.5s infinite;
-}
+/* WHATSAPP FLOAT */
+.wa{position:fixed;bottom:24px;right:24px;z-index:9000;width:58px;height:58px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;box-shadow:0 8px 25px rgba(37,211,102,.4);animation:wapulse 3s ease-in-out infinite;transition:transform .3s}
+.wa:hover{transform:scale(1.12)}
+@keyframes wapulse{0%,100%{box-shadow:0 8px 25px rgba(37,211,102,.4)}50%{box-shadow:0 8px 40px rgba(37,211,102,.7),0 0 0 12px rgba(37,211,102,.1)}}
 
-/* === STATS BAR === */
-.stats-bar {
-  background: var(--leaf-dark);
-  padding: 30px 5%;
-  position: relative; overflow: hidden;
-}
-.stats-bar::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-.stats-grid {
-  display: grid; grid-template-columns: repeat(4,1fr);
-  gap: 30px; max-width: 1100px; margin: 0 auto;
-  position: relative; z-index: 1;
-}
-.stat-item { text-align: center; }
-.stat-big {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px; font-weight: 900;
-  color: white;
-  display: block;
-}
-.stat-desc { font-size: 13px; color: rgba(255,255,255,0.7); letter-spacing: 0.08em; text-transform: uppercase; }
-.stat-item .stat-big span {
-  background: linear-gradient(135deg, var(--leaf-light), #8bc34a);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-l{opacity:0;transform:translateX(-30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+.reveal-l.visible{opacity:1;transform:translateX(0)}
+.reveal-r{opacity:0;transform:translateX(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+.reveal-r.visible{opacity:1;transform:translateX(0)}
 
-/* === SECTION COMMON === */
-section { padding: 100px 5%; }
-.section-label {
-  display: inline-flex; align-items: center; gap: 8px;
-  color: var(--leaf); font-size: 13px; font-weight: 600;
-  letter-spacing: 0.15em; text-transform: uppercase;
-  margin-bottom: 16px;
-}
-.section-label::before, .section-label::after {
-  content: ''; height: 1px; width: 30px;
-  background: var(--leaf); opacity: 0.4;
-}
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(30px,4vw,48px);
-  font-weight: 800; line-height: 1.15;
-  color: var(--text-dark); margin-bottom: 16px;
-}
-.section-title span {
-  background: linear-gradient(135deg, var(--leaf), var(--leaf-light));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.section-sub {
-  font-size: 16px; color: var(--text-light);
-  line-height: 1.7; max-width: 560px;
-}
+/* MOBILE NAV */
+.mnav{display:none;position:fixed;top:80px;left:0;width:100%;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);padding:20px 5%;box-shadow:0 10px 30px rgba(0,0,0,.1);flex-direction:column;gap:4px;z-index:999}
+.mnav a{display:block;padding:12px 16px;border-radius:12px;text-decoration:none;font-size:15px;font-weight:500;color:var(--tm);transition:all .3s}
+.mnav a:hover{background:var(--gp);color:var(--g)}
+.mnav.open{display:flex}
 
-/* === SERVICES === */
-.services { background: var(--off-white); }
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px,1fr));
-  gap: 28px; margin-top: 60px;
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .about-grid,.cgrid{grid-template-columns:1fr;gap:40px}
+  .map-wrap{grid-template-columns:1fr;gap:40px}
+  .hcs{width:340px;height:420px}
+  .hmain{width:300px;height:370px}
+  .fg2{grid-template-columns:1fr 1fr}
+  .svc-modal-checks,.svc-why-grid{grid-template-columns:1fr}
+  .svc-improve-grid{grid-template-columns:1fr 1fr}
+  .svc-modal-body{padding:28px 28px}
+  .svc-modal-header{padding:28px 28px 24px}
+}
+@media(max-width:768px){
+  .nl{display:none}
+  .hbg{display:flex}
+  .hero{flex-direction:column;text-align:center;padding:100px 5% 60px}
+  .hv{display:none}
+  .hbtns{justify-content:center}
+  .sg{grid-template-columns:repeat(2,1fr)}
+  .psteps{grid-template-columns:repeat(2,1fr)}
+  .psteps::before{display:none}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .gal-item:first-child{grid-column:span 2}
+  .doc-grid{grid-template-columns:1fr 1fr}
+  .frow{grid-template-columns:1fr}
+  .fg2{grid-template-columns:1fr}
+  .svc-improve-grid{grid-template-columns:1fr 1fr}
+  .svc-modal-actions{flex-direction:column}
+}
+@media(max-width:480px){
+  .sg{grid-template-columns:repeat(2,1fr);gap:16px}
+  .psteps{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr}
+  .gal-item:first-child{grid-column:span 1}
+  .doc-grid{grid-template-columns:1fr}
+  .svc-modal-checks{grid-template-columns:1fr}
+  .svc-improve-grid{grid-template-columns:1fr}
+  .svc-modal-box{border-radius:20px}
+  .svc-modal-header{padding:24px 20px 20px;border-radius:20px 20px 0 0}
+  .svc-modal-body{padding:20px}
 }
-.service-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
-  cursor: none;
-  position: relative;
-  border: 1px solid rgba(58,140,63,0.06);
-}
-.service-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 30px 80px rgba(58,140,63,0.2);
-  border-color: rgba(58,140,63,0.15);
-}
-.service-card::after {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
-  background: linear-gradient(90deg, var(--leaf), var(--leaf-light));
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
-}
-.service-card:hover::after { transform: scaleX(1); }
-
-.service-visual {
-  height: 200px;
-  position: relative; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-}
-.service-visual-bg {
-  position: absolute; inset: 0;
-  transition: transform 0.6s;
-}
-.service-card:hover .service-visual-bg { transform: scale(1.08); }
-.service-emoji {
-  font-size: 72px; position: relative; z-index: 2;
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.15));
-  transition: transform 0.4s;
-}
-.service-card:hover .service-emoji { transform: scale(1.1) translateY(-5px); }
-
-/* South Indian motif overlay */
-.service-motif {
-  position: absolute; inset: 0; z-index: 1;
-  opacity: 0.06;
-  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 10 C40 10 50 20 50 30 C50 40 40 45 40 45 C40 45 30 40 30 30 C30 20 40 10 40 10Z' fill='%233a8c3f' opacity='0.5'/%3E%3C/svg%3E") repeat;
-}
-
-.service-body { padding: 24px 28px 28px; }
-.service-tag {
-  display: inline-block;
-  background: var(--leaf-pale);
-  color: var(--leaf-dark);
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 4px 12px; border-radius: 50px;
-  margin-bottom: 12px;
-}
-.service-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px; font-weight: 700;
-  color: var(--text-dark); margin-bottom: 10px;
-}
-.service-desc {
-  font-size: 14px; color: var(--text-light);
-  line-height: 1.65; margin-bottom: 16px;
-}
-.service-steps {
-  list-style: none;
-  margin-bottom: 20px;
-}
-.service-steps li {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 13px; color: var(--text-mid);
-  padding: 6px 0;
-  border-bottom: 1px solid var(--leaf-pale);
-}
-.service-steps li:last-child { border-bottom: none; }
-.step-num {
-  width: 22px; height: 22px; min-width: 22px;
-  background: var(--leaf);
-  color: white; border-radius: 50%;
-  font-size: 11px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-  margin-top: 1px;
-}
-.service-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: linear-gradient(135deg, var(--leaf), var(--leaf-dark));
-  color: white; padding: 12px 24px; border-radius: 50px;
-  font-size: 14px; font-weight: 600;
-  text-decoration: none; border: none; cursor: none;
-  width: 100%; justify-content: center;
-  transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(58,140,63,0.3);
-}
-.service-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(58,140,63,0.45);
-}
-
-/* === WHY CHOOSE US === */
-.why-us { background: white; }
-.why-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 80px; align-items: center;
-  margin-top: 60px;
-}
-.why-features { display: flex; flex-direction: column; gap: 24px; }
-.feature-item {
-  display: flex; gap: 20px; align-items: flex-start;
-  padding: 24px;
-  border-radius: var(--radius);
-  transition: all 0.4s;
-  cursor: none;
-}
-.feature-item:hover {
-  background: var(--leaf-pale);
-  transform: translateX(8px);
-}
-.feature-icon {
-  width: 56px; height: 56px; min-width: 56px;
-  background: linear-gradient(135deg, var(--leaf-pale), var(--leaf-mint));
-  border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 26px;
-  border: 1px solid var(--leaf-mint);
-}
-.feature-title { font-size: 17px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
-.feature-desc { font-size: 14px; color: var(--text-light); line-height: 1.6; }
-
-.why-visual { position: relative; }
-.why-card-main {
-  background: linear-gradient(145deg, var(--leaf-dark), #1a4d1e);
-  border-radius: var(--radius-lg);
-  padding: 40px; position: relative; overflow: hidden;
-}
-.why-card-main::before {
-  content: '🌿';
-  position: absolute; right: -20px; top: -20px;
-  font-size: 180px; opacity: 0.06;
-}
-.founder-profile {
-  display: flex; align-items: center; gap: 20px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 16px; padding: 24px;
-  margin-bottom: 28px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.15);
-}
-.founder-avatar {
-  width: 72px; height: 72px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--leaf-light), #8bc34a);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 36px;
-  border: 3px solid rgba(255,255,255,0.3);
-  flex-shrink: 0;
-}
-.founder-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px; font-weight: 700; color: white;
-}
-.founder-title { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 3px; }
-.founder-cred {
-  display: inline-block;
-  background: rgba(92,184,92,0.3);
-  color: var(--leaf-light);
-  font-size: 11px; font-weight: 700;
-  padding: 4px 12px; border-radius: 50px; margin-top: 6px;
-  border: 1px solid rgba(92,184,92,0.3);
-}
-
-.coverage-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-}
-.coverage-item {
-  background: rgba(255,255,255,0.08);
-  border-radius: 12px; padding: 16px;
-  border: 1px solid rgba(255,255,255,0.1);
-  text-align: center;
-}
-.coverage-icon { font-size: 28px; margin-bottom: 6px; }
-.coverage-label { font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 500; }
-
-/* === PROCESS === */
-.process {
-  background: linear-gradient(135deg, #f0fdf4 0%, #e8f5e9 50%, #f9fffe 100%);
-}
-.process-steps {
-  display: grid; grid-template-columns: repeat(4,1fr);
-  gap: 24px; margin-top: 60px;
-  position: relative;
-}
-.process-steps::before {
-  content: '';
-  position: absolute; top: 40px; left: calc(12.5% + 20px); right: calc(12.5% + 20px); height: 2px;
-  background: linear-gradient(90deg, var(--leaf), var(--leaf-light));
-  z-index: 0;
-}
-.process-step {
-  text-align: center; position: relative; z-index: 1;
-  padding: 0 10px;
-  transition: transform 0.4s;
-}
-.process-step:hover { transform: translateY(-8px); }
-.process-num {
-  width: 80px; height: 80px;
-  background: linear-gradient(135deg, var(--leaf), var(--leaf-dark));
-  border-radius: 50%; margin: 0 auto 20px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 28px; font-weight: 900; color: white;
-  box-shadow: 0 8px 25px rgba(58,140,63,0.35);
-  border: 4px solid white;
-  position: relative;
-}
-.process-num::after {
-  content: '';
-  position: absolute; inset: -6px;
-  border: 2px dashed var(--leaf-mint);
-  border-radius: 50%;
-  animation: spin 20s linear infinite;
-}
-@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-.process-icon {
-  position: absolute; top: -10px; right: -10px;
-  width: 30px; height: 30px;
-  background: white;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-.process-title { font-size: 17px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
-.process-desc { font-size: 13px; color: var(--text-light); line-height: 1.6; }
-
-/* === TESTIMONIALS === */
-.testimonials { background: white; overflow: hidden; }
-.testimonials-header { margin-bottom: 60px; }
-.reviews-track-wrapper {
-  overflow: hidden; position: relative;
-  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
-}
-.reviews-track {
-  display: flex; gap: 24px;
-  animation: scrollTrack 30s linear infinite;
-  width: max-content;
-}
-.reviews-track:hover { animation-play-state: paused; }
-@keyframes scrollTrack { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-.review-card {
-  background: var(--off-white);
-  border-radius: var(--radius);
-  padding: 28px;
-  width: 340px; flex-shrink: 0;
-  border: 1px solid var(--leaf-mint);
-  transition: all 0.4s;
-  cursor: none;
-}
-.review-card:hover {
-  background: white;
-  box-shadow: var(--shadow-soft);
-  transform: translateY(-6px);
-  border-color: var(--leaf-light);
-}
-.review-stars { color: #f59e0b; font-size: 16px; margin-bottom: 14px; letter-spacing: 2px; }
-.review-text { font-size: 14px; color: var(--text-mid); line-height: 1.7; font-style: italic; margin-bottom: 18px; }
-.reviewer-info { display: flex; align-items: center; gap: 12px; }
-.reviewer-avatar {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--leaf-pale), var(--leaf-mint));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px;
-}
-.reviewer-name { font-weight: 700; font-size: 14px; color: var(--text-dark); }
-.reviewer-place { font-size: 12px; color: var(--text-light); }
-.google-badge {
-  margin-left: auto;
-  background: white; border: 1px solid #e0e0e0;
-  border-radius: 8px; padding: 4px 10px;
-  font-size: 11px; font-weight: 700; color: #4285f4;
-  display: flex; align-items: center; gap: 4px;
-}
-
-/* === CONTACT === */
-.contact {
-  background: linear-gradient(135deg, #1a4d1e 0%, var(--leaf-dark) 50%, #2d6e31 100%);
-  position: relative; overflow: hidden;
-}
-.contact::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E") repeat;
-}
-.contact-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 80px; align-items: start;
-  position: relative; z-index: 1;
-}
-.contact h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px,3.5vw,44px);
-  font-weight: 800; color: white; margin-bottom: 12px;
-}
-.contact .section-label { color: var(--leaf-light); }
-.contact .section-label::before, .contact .section-label::after { background: var(--leaf-light); }
-.contact-sub { font-size: 16px; color: rgba(255,255,255,0.7); margin-bottom: 40px; line-height: 1.7; }
-
-.contact-items { display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px; }
-.contact-item {
-  display: flex; align-items: center; gap: 16px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 14px; padding: 18px 22px;
-  border: 1px solid rgba(255,255,255,0.1);
-  transition: all 0.3s;
-  cursor: none; text-decoration: none;
-}
-.contact-item:hover {
-  background: rgba(255,255,255,0.14);
-  border-color: rgba(92,184,92,0.4);
-  transform: translateX(6px);
-}
-.contact-item-icon {
-  width: 44px; height: 44px;
-  background: rgba(92,184,92,0.2);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; flex-shrink: 0;
-}
-.contact-item-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
-.contact-item-val { font-size: 15px; font-weight: 600; color: white; margin-top: 2px; }
-
-/* Contact Form */
-.contact-form {
-  background: white; border-radius: var(--radius-lg);
-  padding: 40px;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.2);
-}
-.form-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px; font-weight: 700;
-  color: var(--text-dark); margin-bottom: 28px;
-}
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-.form-group { margin-bottom: 16px; }
-.form-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-mid); margin-bottom: 8px; }
-.form-input, .form-select, .form-textarea {
-  width: 100%; padding: 12px 16px;
-  border: 2px solid var(--leaf-mint);
-  border-radius: 12px; font-size: 14px;
-  font-family: 'DM Sans', sans-serif;
-  color: var(--text-dark);
-  background: var(--off-white);
-  transition: all 0.3s;
-  outline: none;
-}
-.form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: var(--leaf);
-  background: white;
-  box-shadow: 0 0 0 4px rgba(58,140,63,0.1);
-}
-.form-textarea { resize: vertical; min-height: 100px; }
-.form-submit {
-  width: 100%; padding: 16px;
-  background: linear-gradient(135deg, var(--leaf), var(--leaf-dark));
-  color: white; border: none;
-  border-radius: 12px; font-size: 16px; font-weight: 700;
-  cursor: none; transition: all 0.3s;
-  box-shadow: 0 6px 20px rgba(58,140,63,0.35);
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  font-family: 'DM Sans', sans-serif;
-}
-.form-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(58,140,63,0.45);
-}
-
-/* Map placeholder */
-.map-container {
-  margin-top: 40px;
-  border-radius: var(--radius);
-  overflow: hidden;
-  height: 200px;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.15);
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 10px;
-  cursor: none;
-  transition: all 0.3s;
-  text-decoration: none;
-}
-.map-container:hover { background: rgba(255,255,255,0.15); }
-.map-pin { font-size: 40px; animation: pinBounce 2s ease-in-out infinite; }
-@keyframes pinBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-.map-label { color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 600; }
-.map-sub { color: rgba(255,255,255,0.5); font-size: 12px; }
-
-/* === FLOATING BUTTONS === */
-.whatsapp-float {
-  position: fixed; bottom: 30px; right: 30px; z-index: 9000;
-  width: 60px; height: 60px;
-  background: #25D366;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 28px;
-  box-shadow: 0 8px 30px rgba(37,211,102,0.5);
-  text-decoration: none; cursor: none;
-  animation: waBounce 3s ease-in-out infinite;
-  transition: transform 0.3s;
-}
-.whatsapp-float:hover { transform: scale(1.15); animation: none; }
-@keyframes waBounce {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-.whatsapp-float::before {
-  content: '';
-  position: absolute; inset: -6px;
-  border: 2px solid rgba(37,211,102,0.3);
-  border-radius: 50%;
-  animation: waRing 2s linear infinite;
-}
-@keyframes waRing {
-  0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(1.4); opacity: 0; }
-}
-
-.call-float {
-  position: fixed; bottom: 30px; left: 30px; z-index: 9000;
-  width: 60px; height: 60px;
-  background: linear-gradient(135deg, var(--leaf), var(--leaf-dark));
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 26px;
-  box-shadow: 0 8px 30px rgba(58,140,63,0.5);
-  text-decoration: none; cursor: none;
-  animation: callPulse 2s ease-in-out infinite;
-}
-@keyframes callPulse { 0%,100%{box-shadow:0 8px 30px rgba(58,140,63,0.5)} 50%{box-shadow:0 12px 40px rgba(58,140,63,0.7)} }
-.call-float:hover { transform: scale(1.12); }
-
-/* === FOOTER === */
-footer {
-  background: #0f2e11;
-  padding: 60px 5% 30px;
-  color: rgba(255,255,255,0.7);
-}
-.footer-grid {
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px; margin-bottom: 48px;
-}
-.footer-brand {}
-.footer-logo-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.footer-logo-icon {
-  width: 44px; height: 44px;
-  background: linear-gradient(135deg, var(--leaf), var(--leaf-light));
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-}
-.footer-brand-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 18px; font-weight: 700; color: white;
-}
-.footer-desc { font-size: 13px; line-height: 1.7; margin-bottom: 20px; }
-.footer-social { display: flex; gap: 10px; }
-.social-btn {
-  width: 38px; height: 38px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; cursor: none; text-decoration: none;
-  transition: all 0.3s;
-}
-.social-btn:hover { background: var(--leaf); transform: translateY(-3px); }
-.footer-col h4 {
-  font-size: 14px; font-weight: 700; color: white;
-  margin-bottom: 20px; letter-spacing: 0.05em;
-}
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-col ul li a {
-  font-size: 13px; color: rgba(255,255,255,0.6);
-  text-decoration: none; cursor: none;
-  transition: color 0.3s;
-  display: flex; align-items: center; gap: 6px;
-}
-.footer-col ul li a:hover { color: var(--leaf-light); }
-.footer-col ul li a::before { content: '→'; opacity: 0; transition: opacity 0.3s, transform 0.3s; transform: translateX(-6px); font-size: 11px; }
-.footer-col ul li a:hover::before { opacity: 1; transform: translateX(0); }
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 24px;
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: 13px;
-}
-.footer-bottom a { color: var(--leaf-light); text-decoration: none; cursor: none; }
-
-/* Reveal animations */
-.reveal {
-  opacity: 0; transform: translateY(40px);
-  transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-.reveal-delay-5 { transition-delay: 0.5s; }
-.reveal-delay-6 { transition-delay: 0.6s; }
-
-/* Mobile */
-@media (max-width: 900px) {
-  .hero { flex-direction: column; padding-top: 120px; gap: 40px; }
-  .hero-content { max-width: 100%; text-align: center; }
-  .hero-buttons { justify-content: center; }
-  .hero-animated-text { justify-content: center; }
-  .hero-visual { display: none; }
-  .stats-grid { grid-template-columns: repeat(2,1fr); }
-  .services-grid { grid-template-columns: 1fr; }
-  .why-grid { grid-template-columns: 1fr; }
-  .process-steps { grid-template-columns: repeat(2,1fr); }
-  .process-steps::before { display: none; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .nav-links { display: none; }
-  .form-row { grid-template-columns: 1fr; }
-}
-
-/* Gradient animated bg for hero supplement */
-@keyframes gradientShift {
-  0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}
-}
-
-/* service color themes */
-.svc-1 .service-visual-bg { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
-.svc-2 .service-visual-bg { background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
-.svc-3 .service-visual-bg { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
-.svc-4 .service-visual-bg { background: linear-gradient(135deg, #fff8e1, #ffecb3); }
-.svc-5 .service-visual-bg { background: linear-gradient(135deg, #e8eaf6, #c5cae9); }
-.svc-6 .service-visual-bg { background: linear-gradient(135deg, #e0f2f1, #b2dfdb); }
-.svc-7 .service-visual-bg { background: linear-gradient(135deg, #fbe9e7, #ffccbc); }
-.svc-8 .service-visual-bg { background: linear-gradient(135deg, #f3e5f5, #e1bee7); }
-
-/* Marquee benefits bar */
-.benefits-marquee {
-  background: var(--leaf-pale);
-  padding: 16px 0;
-  overflow: hidden;
-  border-top: 1px solid var(--leaf-mint);
-  border-bottom: 1px solid var(--leaf-mint);
-}
-.marquee-track {
-  display: flex; gap: 0;
-  animation: marqueeSlide 20s linear infinite;
-  width: max-content;
-}
-.marquee-track:hover { animation-play-state: paused; }
-@keyframes marqueeSlide { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-.marquee-item {
-  display: flex; align-items: center; gap: 8px;
-  padding: 0 30px; font-size: 14px; font-weight: 600;
-  color: var(--leaf-dark); white-space: nowrap;
-}
-.marquee-item::after { content: '•'; color: var(--leaf-light); margin-left: 22px; }
-
-/* More services grid */
-.more-services {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
-  gap: 16px; margin-top: 40px;
-}
-.mini-service {
-  background: white; border: 1px solid var(--leaf-mint);
-  border-radius: 16px; padding: 20px;
-  text-align: center; cursor: none;
-  transition: all 0.3s;
-}
-.mini-service:hover {
-  border-color: var(--leaf);
-  background: var(--leaf-pale);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-soft);
-}
-.mini-icon { font-size: 32px; margin-bottom: 10px; }
-.mini-name { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
-.mini-btn {
-  display: inline-block; background: var(--leaf-pale);
-  color: var(--leaf-dark); padding: 5px 14px;
-  border-radius: 50px; font-size: 11px; font-weight: 700;
-  transition: all 0.3s;
-}
-.mini-service:hover .mini-btn { background: var(--leaf); color: white; }
 </style>
 </head>
 <body>
+<div id="sp"></div>
 
-<!-- Cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<!-- SERVICE DETAIL MODAL -->
+<div id="svcModal">
+  <div class="svc-modal-bg" onclick="closeModal()"></div>
+  <div class="svc-modal-box" id="modalContent">
+    <!-- filled by JS -->
+  </div>
+</div>
 
-<!-- Scroll Progress -->
-<div class="scroll-progress" id="scrollProgress"></div>
+<!-- POPUP -->
+<div id="popup">
+  <div class="pop-bg" onclick="closePopup()"></div>
+  <div class="pop-box">
+    <button class="pop-close" onclick="closePopup()">✕</button>
+    <div class="pop-badge"><span></span> 24/7 Available</div>
+    <h3>Book Your Home Care</h3>
+    <p>Get professional healthcare at your doorstep. Quick consultation — no waiting rooms, no travel.</p>
+    <div class="pop-features">
+      <div class="pop-feat">Certified Nurses</div>
+      <div class="pop-feat">Physiotherapists</div>
+      <div class="pop-feat">ICU at Home</div>
+      <div class="pop-feat">24/7 Support</div>
+    </div>
+    <div class="pop-form">
+      <input type="text" id="pop-name" placeholder="Your Name" autocomplete="name">
+      <input type="tel" id="pop-phone" placeholder="Phone Number (+91)" autocomplete="tel">
+      <select id="pop-service">
+        <option value="">Select Service Required</option>
+        <option>Nursing Care at Home</option>
+        <option>Physiotherapy at Home</option>
+        <option>Post Operative Care</option>
+        <option>Elderly / Geriatric Care</option>
+        <option>Pediatric Care</option>
+        <option>Doctor Visit at Home</option>
+        <option>ICU Setup at Home</option>
+        <option>Home Sample Collection</option>
+        <option>Medical Equipment Rental</option>
+        <option>Palliative Care</option>
+      </select>
+      <button class="pop-btn" onclick="submitPopup()">💬 Book via WhatsApp Now</button>
+    </div>
+    <span class="pop-skip" onclick="closePopup()">Maybe later — I'll browse first</span>
+  </div>
+</div>
 
-<!-- WhatsApp Float -->
-<a href="https://wa.me/916383915367?text=Hello%2C%20I%20would%20like%20to%20book%20a%20home%20healthcare%20appointment%20with%20Green%20Life%20Home%20Health%20Care." class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
-
-<!-- Call Float -->
-<a href="tel:+916383915367" class="call-float" title="Call Now">📞</a>
+<!-- MOBILE NAV -->
+<div class="mnav" id="mnav">
+  <a href="#home" onclick="closeMNav()">Home</a>
+  <a href="#about" onclick="closeMNav()">About</a>
+  <a href="#services" onclick="closeMNav()">Services</a>
+  <a href="#doctors" onclick="closeMNav()">Our Team</a>
+  <a href="#gallery" onclick="closeMNav()">Gallery</a>
+  <a href="#reviews" onclick="closeMNav()">Reviews</a>
+  <a href="#contact" onclick="closeMNav()">Contact</a>
+  <a href="https://wa.me/916383915367" target="_blank" style="background:var(--g);color:#fff!important;text-align:center;margin-top:8px;border-radius:50px">💬 Book Now</a>
+</div>
 
 <!-- NAVBAR -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="#" class="logo">
-      <div class="logo-icon">🌿</div>
-      <div class="logo-text">
-        <span class="logo-main">Green Life</span>
-        <span class="logo-sub">Home Health Care</span>
+<nav id="nav">
+  <div class="ni">
+    <a href="#home" class="logo">
+      <div class="logo-img">🌿</div>
+      <div>
+        <div class="ln">Green Life</div>
+        <div class="ls">Home Health Care</div>
       </div>
     </a>
-    <ul class="nav-links">
+    <ul class="nl">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#why-us">About</a></li>
-      <li><a href="#process">How It Works</a></li>
-      <li><a href="#testimonials">Reviews</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="https://wa.me/916383915367?text=Hello%2C%20I%20want%20to%20book%20an%20appointment." class="nav-cta" target="_blank">📅 Book Appointment</a></li>
+      <li><a href="#doctors">Team</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact" class="nc">Book Now</a></li>
     </ul>
+    <button class="hbg" id="hbg" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <!-- Background: place your hero image at images/hero/hero-bg.jpg -->
+  <!-- Suggested: South Indian family with a nurse at home, warm lighting -->
+  <div class="hero-bg">
+    <img src="images/hero/hero-bg.jpg" alt="Home Healthcare Tamil Nadu" class="hero-bg-img" onerror="this.style.display='none'">
+    <div class="hero-bg-overlay"></div>
+  </div>
   <div class="particles" id="particles"></div>
-  <div class="leaf-deco" style="top:10%;left:-3%">🌿</div>
-  <div class="leaf-deco" style="bottom:5%;right:-2%;animation-delay:-3s">🍃</div>
-
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
-      Serving All Over Tamil Nadu
-    </div>
-    <h1>Leading The Way<br>To <span>Better Health</span></h1>
-    <p class="hero-tagline">Professional, Compassionate & Hygienic Patient Care</p>
-    <div class="hero-animated-text">
-      <span>We provide </span>
-      <div class="text-cycle">
-        <span>Nursing Care at Home 🏠</span>
-      </div>
-    </div>
-    <!-- Animated text swap via JS -->
-    <p class="hero-desc">Green Life Home Health Care brings certified nursing professionals to your doorstep — 24/7 across Tamil Nadu. Experienced, empathetic, and hygienic support tailored to every patient's needs.</p>
-    <div class="hero-buttons">
-      <a href="https://wa.me/916383915367?text=Hello%2C%20I%20would%20like%20to%20book%20a%20home%20healthcare%20appointment." class="btn-primary" target="_blank">
-        📅 Book Appointment
-      </a>
-      <a href="tel:+916383915367" class="btn-secondary">
-        📞 Call Now
-      </a>
+  <div class="hc">
+    <div class="hbadge"><span></span> Serving All of Tamil Nadu 24/7</div>
+    <h1>Care That Comes<br>To <span>Your Home</span></h1>
+    <p class="hero-tag">— Revitalize Your Health, Wherever You Are —</p>
+    <div class="hsc">We Provide ➜ <span class="tc" id="tc">Nursing Care at Home 🏠</span></div>
+    <p class="hdesc">Through our Green Life Home Health Care initiative, we extend medical expertise beyond hospital walls — providing round-the-clock care directly in patients' homes. Because recovery is faster in familiar surroundings.</p>
+    <div class="hbtns">
+      <a href="https://wa.me/916383915367?text=Hi%20Green%20Life!%20I%20need%20home%20health%20care%20services." target="_blank" class="btn1">💬 WhatsApp Now</a>
+      <a href="#services" class="btn2">🏥 Our Services</a>
     </div>
   </div>
-
-  <div class="hero-visual">
-    <div class="hero-card-stack">
-      <div class="hero-main-card">
-        <div class="avail-badge"><span class="avail-dot"></span>Available 24/7</div>
-        <div class="nurse-illustration">👩‍⚕️</div>
-        <span class="card-label">Our Care Team</span>
-        <div class="card-title">24/7 Home<br>Health Care</div>
+  <div class="hv">
+    <div class="hcs">
+      <div class="hmain">
+        <!-- Hero card image: images/hero/hero-card.jpg - nurse caring for patient at home -->
+        <!-- Suggested: South Indian nurse in white uniform attending elderly patient -->
+        <img src="images/hero/hero-card.jpg" alt="Home Nursing Care" class="hero-main-img"
+             onerror="this.style.display='none'; document.getElementById('heroFallback').style.display='flex'">
+        <div class="hero-main-fallback" id="heroFallback" style="display:none">🏠</div>
+        <div class="avb"><span></span> Available Now</div>
+        <div class="clabel">Professional Care</div>
+        <div class="ctitle">Green Life at Home</div>
       </div>
-      <div class="stat-card stat-card-1">
-        <div class="stat-icon">🏆</div>
-        <div>
-          <div class="stat-num">500+</div>
-          <div class="stat-label">Happy Patients</div>
-        </div>
+      <div class="sc2 sc2-1">
+        <div class="si">⭐</div>
+        <div><div class="sn">4.9/5</div><div class="sl">Google Rating</div></div>
       </div>
-      <div class="stat-card stat-card-2">
-        <div class="stat-icon">🌟</div>
-        <div>
-          <div class="stat-num">4.9★</div>
-          <div class="stat-label">Google Rating</div>
-        </div>
+      <div class="sc2 sc2-2">
+        <div class="si">👩‍⚕️</div>
+        <div><div class="sn">50+</div><div class="sl">Expert Staff</div></div>
       </div>
-      <div class="stat-card stat-card-3">
-        <div class="stat-icon">👩‍⚕️</div>
-        <div>
-          <div class="stat-num">50+</div>
-          <div class="stat-label">Nurses</div>
-        </div>
+      <div class="sc2 sc2-3">
+        <div class="si">❤️</div>
+        <div><div class="sn">1000+</div><div class="sl">Happy Patients</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Benefits Marquee -->
-<div class="benefits-marquee">
-  <div class="marquee-track">
-    <span class="marquee-item">✅ Enhances Self-Sufficiency in Daily Tasks</span>
-    <span class="marquee-item">💊 Specialized Care for Chronic Illness</span>
-    <span class="marquee-item">🤝 Supportive & Understanding Companions</span>
-    <span class="marquee-item">📊 Continuous Health Monitoring</span>
-    <span class="marquee-item">🛡️ Reducing the Risk of Injuries</span>
-    <span class="marquee-item">🌱 Improve Quality of Life</span>
-    <span class="marquee-item">🏠 Retain Their Independence at Home</span>
-    <span class="marquee-item">🔬 Professional Medical Procedures</span>
-    <span class="marquee-item">✅ Enhances Self-Sufficiency in Daily Tasks</span>
-    <span class="marquee-item">💊 Specialized Care for Chronic Illness</span>
-    <span class="marquee-item">🤝 Supportive & Understanding Companions</span>
-    <span class="marquee-item">📊 Continuous Health Monitoring</span>
-    <span class="marquee-item">🛡️ Reducing the Risk of Injuries</span>
-    <span class="marquee-item">🌱 Improve Quality of Life</span>
-    <span class="marquee-item">🏠 Retain Their Independence at Home</span>
-    <span class="marquee-item">🔬 Professional Medical Procedures</span>
+<!-- STATS BAR -->
+<div class="sb" id="statsBar">
+  <div class="sg">
+    <div class="si2 reveal"><div class="sn2" id="c1">0</div><div class="sl2">Happy Patients Served</div></div>
+    <div class="si2 reveal"><div class="sn2" id="c2">0</div><div class="sl2">Expert Nursing Staff</div></div>
+    <div class="si2 reveal"><div class="sn2" id="c3">0</div><div class="sl2">Districts Covered</div></div>
+    <div class="si2 reveal"><div class="sn2" id="c4">0</div><div class="sl2">Hour Availability</div></div>
   </div>
 </div>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-grid">
-    <div class="stat-item reveal">
-      <span class="stat-big"><span id="c1">0</span>+</span>
-      <span class="stat-desc">Happy Patients Served</span>
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal-l">
+      <!-- About image: images/hero/about-team.jpg -->
+      <!-- Suggested: Tamil Nadu nursing team with green uniforms, smiling, South Indian setting -->
+      <img src="images/hero/about-team.jpg" alt="Green Life Care Team" class="about-img"
+           onerror="this.style.display='none'; document.getElementById('aboutFallback').style.display='flex'">
+      <div class="about-img-fallback" id="aboutFallback" style="display:none">🏥</div>
+      <div class="about-badge">
+        <div class="about-badge-num">1000+</div>
+        <div class="about-badge-txt">Happy Patients</div>
+      </div>
     </div>
-    <div class="stat-item reveal reveal-delay-1">
-      <span class="stat-big"><span id="c2">0</span>+</span>
-      <span class="stat-desc">Expert Nurses & Doctors</span>
-    </div>
-    <div class="stat-item reveal reveal-delay-2">
-      <span class="stat-big"><span id="c3">0</span></span>
-      <span class="stat-desc">Districts in Tamil Nadu</span>
-    </div>
-    <div class="stat-item reveal reveal-delay-3">
-      <span class="stat-big"><span id="c4">0</span>/7</span>
-      <span class="stat-desc">Hours Available Daily</span>
+    <div class="about-content reveal-r">
+      <div><div class="section-chip">🌿 About Us</div></div>
+      <h2>Bringing Hospital-Quality Care to Your Doorstep</h2>
+      <p>Through our Green Life Home Health Care initiative, we aim to extend our medical expertise beyond hospital walls, providing round-the-clock care directly in patients' homes. We believe that a lot of patients around the world do not receive timely assistance especially when they need it the most.</p>
+      <p>Our vision is to ensure that patients and their loved ones remain in a comfortable, familiar environment — because various studies suggest that familiar surroundings can aid recovery. Our services are available <strong>24/7</strong>, bridging the gap between hospital and home.</p>
+      <div class="about-features">
+        <div class="af">Certified & Trained Nurses</div>
+        <div class="af">Home Sample Collection</div>
+        <div class="af">Physiotherapy at Home</div>
+        <div class="af">Critical Care Packages</div>
+        <div class="af">Medical Equipment Rental</div>
+        <div class="af">Post-Operative Care</div>
+        <div class="af">ICU Setup at Home</div>
+        <div class="af">Round-the-Clock Support</div>
+      </div>
+      <a href="https://wa.me/916383915367" target="_blank" class="btn1" style="margin-top:8px;width:fit-content">💬 Talk to a Care Expert</a>
     </div>
   </div>
+</section>
+
+<!-- HAPPY PATIENTS STRIP -->
+<div class="happy-strip">
+  <div class="happy-num" id="hp">1,000+</div>
+  <div class="happy-label">Happy Patients & Counting Across Tamil Nadu</div>
+  <div class="happy-subtitle">Join thousands of families who trust Green Life for professional home care</div>
 </div>
 
 <!-- SERVICES -->
 <section class="services" id="services">
-  <div style="text-align:center;margin-bottom:8px">
-    <span class="section-label reveal">Our Services</span>
-  </div>
-  <div style="text-align:center">
-    <h2 class="section-title reveal">Comprehensive <span>Home Healthcare</span><br>Services</h2>
-    <p class="section-sub reveal" style="margin:0 auto">Professional, hygienic, and compassionate care delivered to your home across Tamil Nadu by our experienced team.</p>
-  </div>
-
-  <div class="services-grid">
-
-    <!-- Service 1 -->
-    <div class="service-card svc-1 reveal">
-      <div class="service-visual">
-        <div class="service-visual-bg"></div>
-        <div class="service-motif"></div>
-        <div class="service-emoji">👩‍⚕️</div>
-      </div>
-      <div class="service-body">
-        <span class="service-tag">Most Popular</span>
-        <div class="service-name">Nursing Care at Home</div>
-        <p class="service-desc">Certified registered nurses providing round-the-clock professional medical care in the comfort of your home — Chennai to Coimbatore.</p>
-        <ul class="service-steps">
-          <li><span class="step-num">1</span> Contact us & share patient details</li>
-          <li><span class="step-num">2</span> We assign a qualified nurse</li>
-          <li><span class="step-num">3</span> Nurse arrives within hours</li>
-          <li><span class="step-num">4</span> Daily health monitoring & reports</li>
-        </ul>
-        <a href="https://wa.me/916383915367?text=I%20need%20Nursing%20Care%20at%20Home" class="service-btn" target="_blank">📅 Book Appointment →</a>
-      </div>
+  <div class="section-inner">
+    <div class="sh reveal">
+      <div class="section-chip" style="margin:0 auto 16px">🏥 Our Services</div>
+      <h2>Comprehensive Home Healthcare Services</h2>
+      <p>From routine nursing to critical care — all delivered professionally at your home. Click any service to learn more.</p>
     </div>
-
-    <!-- Service 2 -->
-    <div class="service-card svc-2 reveal reveal-delay-1">
-      <div class="service-visual">
-        <div class="service-visual-bg"></div>
-        <div class="service-motif"></div>
-        <div class="service-emoji">🦿</div>
-      </div>
-      <div class="service-body">
-        <span class="service-tag">Recovery Care</span>
-        <div class="service-name">Physiotherapy at Home</div>
-        <p class="service-desc">Licensed physiotherapists visit your home for rehabilitation, pain management, mobility restoration and post-injury recovery.</p>
-        <ul class="service-steps">
-          <li><span class="step-num">1</span> Share your diagnosis / condition</li>
-          <li><span class="step-num">2</span> Customized therapy plan created</li>
-          <li><span class="step-num">3</span> Regular sessions at home</li>
-          <li><span class="step-num">4</span> Progress tracked & reviewed</li>
-        </ul>
-        <a href="https://wa.me/916383915367?text=I%20need%20Physiotherapy%20at%20Home" class="service-btn" target="_blank">📅 Book Appointment →</a>
-      </div>
+    <div class="svgrid" id="svgrid">
+      <!-- Services injected by JS with images from images/services/ folder -->
     </div>
-
-    <!-- Service 3 -->
-    <div class="service-card svc-3 reveal reveal-delay-2">
-      <div class="service-visual">
-        <div class="service-visual-bg"></div>
-        <div class="service-motif"></div>
-        <div class="service-emoji">🏥</div>
-      </div>
-      <div class="service-body">
-        <span class="service-tag">Post Surgery</span>
-        <div class="service-name">Post Operative Care</div>
-        <p class="service-desc">Expert surgical wound care, medication management, and recovery monitoring after surgery — specialized Tamil Nadu home care.</p>
-        <ul class="service-steps">
-          <li><span class="step-num">1</span> Share discharge summary</li>
-          <li><span class="step-num">2</span> Care plan by our medical team</li>
-          <li><span class="step-num">3</span> Wound dressing & medication</li>
-          <li><span class="step-num">4</span> 24/7 emergency support</li>
-        </ul>
-        <a href="https://wa.me/916383915367?text=I%20need%20Post%20Operative%20Care" class="service-btn" target="_blank">📅 Book Appointment →</a>
-      </div>
-    </div>
-
-    <!-- Service 4 -->
-    <div class="service-card svc-4 reveal">
-      <div class="service-visual">
-        <div class="service-visual-bg"></div>
-        <div class="service-motif"></div>
-        <div class="service-emoji">👴</div>
-      </div>
-      <div class="service-body">
-        <span class="service-tag">Elderly Care</span>
-        <div class="service-name">Geriatric / Elderly Care</div>
-        <p class="service-desc">Compassionate, dignified support for senior citizens — daily living assistance, chronic disease management, companionship & safety.</p>
-        <ul class="service-steps">
-          <li><span class="step-num">1</span> Assessment of elderly patient needs</li>
-          <li><span class="step-num">2</span> Assign dedicated attendant/nurse</li>
-          <li><span class="step-num">3</span> Daily care with dignity & warmth</li>
-          <li><span class="step-num">4</span> Family updates every day</li>
-        </ul>
-        <a href="https://wa.me/916383915367?text=I%20need%20Elderly%20Care%20at%20Home" class="service-btn" target="_blank">📅 Book Appointment →</a>
-      </div>
-    </div>
-
-    <!-- Service 5 -->
-    <div class="service-card svc-5 reveal reveal-delay-1">
-      <div class="service-visual">
-        <div class="service-visual-bg"></div>
-        <div class="service-motif"></div>
-        <div class="service-emoji">👶</div>
-      </div>
-      <div class="service-body">
-        <span class="service-tag">Child Care</span>
-        <div class="service-name">Pediatric Care at Home</div>
-        <p class="service-desc">Specialized nursing care for infants, toddlers, and children — experienced pediatric nurses ensuring your child's health & comfort.</p>
-        <ul class="service-steps">
-          <li><span class="step-num">1</span> Share child's health details</li>
-          <li><span class="step-num">2</span> Trained pediatric nurse assigned</li>
-          <li><span class="step-num">3</span> Gentle, safe, loving care</li>
-          <li><span class="step-num">4</span> Regular vitals & updates to parents</li>
-        </ul>
-        <a href="https://wa.me/916383915367?text=I%20need%20Pediatric%20Care%20at%20Home" class="service-btn" target="_blank">📅 Book Appointment →</a>
-      </div>
-    </div>
-
-    <!-- Service 6 -->
-    <div class="service-card svc-6 reveal reveal-delay-2">
-      <div class="service-visual">
-        <div class="service-visual-bg"></div>
-        <div class="service-motif"></div>
-        <div class="service-emoji">🩺</div>
-      </div>
-      <div class="service-body">
-        <span class="service-tag">Doctor Visit</span>
-        <div class="service-name">Doctor Visit at Home</div>
-        <p class="service-desc">Certified doctors visiting your home for consultations, prescriptions, follow-ups, and emergency medical assessments — Tamil Nadu wide.</p>
-        <ul class="service-steps">
-          <li><span class="step-num">1</span> Call or WhatsApp us</li>
-          <li><span class="step-num">2</span> Doctor visit time confirmed</li>
-          <li><span class="step-num">3</span> Thorough consultation at home</li>
-          <li><span class="step-num">4</span> Prescription & follow-up plan</li>
-        </ul>
-        <a href="https://wa.me/916383915367?text=I%20need%20a%20Doctor%20Visit%20at%20Home" class="service-btn" target="_blank">📅 Book Appointment →</a>
-      </div>
-    </div>
-
-    <!-- Service 7 -->
-    <div class="service-card svc-7 reveal">
-      <div class="service-visual">
-        <div class="service-visual-bg"></div>
-        <div class="service-motif"></div>
-        <div class="service-emoji">🕊️</div>
-      </div>
-      <div class="service-body">
-        <span class="service-tag">Palliative</span>
-        <div class="service-name">Palliative Care</div>
-        <p class="service-desc">Compassionate, comfort-focused care for serious illness — pain management, emotional support, and dignity for patients and families.</p>
-        <ul class="service-steps">
-          <li><span class="step-num">1</span> Empathy-first needs assessment</li>
-          <li><span class="step-num">2</span> Personalized comfort care plan</li>
-          <li><span class="step-num">3</span> Holistic pain & symptom management</li>
-          <li><span class="step-num">4</span> Emotional support for whole family</li>
-        </ul>
-        <a href="https://wa.me/916383915367?text=I%20need%20Palliative%20Care%20at%20Home" class="service-btn" target="_blank">📅 Book Appointment →</a>
-      </div>
-    </div>
-
-    <!-- Service 8 -->
-    <div class="service-card svc-8 reveal reveal-delay-1">
-      <div class="service-visual">
-        <div class="service-visual-bg"></div>
-        <div class="service-motif"></div>
-        <div class="service-emoji">🏠</div>
-      </div>
-      <div class="service-body">
-        <span class="service-tag">Critical Care</span>
-        <div class="service-name">ICU Setup at Home</div>
-        <p class="service-desc">Complete ICU-grade equipment & specialized nurse for critical patients who need hospital-level care in the comfort of their home.</p>
-        <ul class="service-steps">
-          <li><span class="step-num">1</span> Medical assessment & approval</li>
-          <li><span class="step-num">2</span> ICU equipment installed at home</li>
-          <li><span class="step-num">3</span> 24/7 specialized nurse on duty</li>
-          <li><span class="step-num">4</span> Daily doctor rounds & monitoring</li>
-        </ul>
-        <a href="https://wa.me/916383915367?text=I%20need%20ICU%20Setup%20at%20Home" class="service-btn" target="_blank">Enquire Now →</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- More Services Grid -->
-  <div style="margin-top:60px">
-    <h3 class="section-title reveal" style="font-size:28px;margin-bottom:8px">More <span>Services</span></h3>
-    <p class="section-sub reveal" style="margin-bottom:0">Additional specialized healthcare solutions</p>
-  </div>
-  <div class="more-services">
-    <div class="mini-service reveal"><div class="mini-icon">👩‍👦</div><div class="mini-name">Mother & Child Care</div><a href="https://wa.me/916383915367?text=Mother%20%26%20Child%20Care" class="mini-btn" target="_blank">Enquire Now</a></div>
-    <div class="mini-service reveal reveal-delay-1"><div class="mini-icon">🩹</div><div class="mini-name">Trained Attendant</div><a href="https://wa.me/916383915367?text=Trained%20Attendant%20at%20Home" class="mini-btn" target="_blank">Enquire Now</a></div>
-    <div class="mini-service reveal reveal-delay-2"><div class="mini-icon">💉</div><div class="mini-name">Adult Vaccination</div><a href="https://wa.me/916383915367?text=Adult%20Vaccination%20at%20Home" class="mini-btn" target="_blank">Book Now</a></div>
-    <div class="mini-service reveal reveal-delay-3"><div class="mini-icon">💊</div><div class="mini-name">Medicine Delivery</div><a href="https://wa.me/916383915367?text=Prescribed%20Medicine%20Delivery" class="mini-btn" target="_blank">Book Now</a></div>
-    <div class="mini-service reveal"><div class="mini-icon">🔬</div><div class="mini-name">Diagnostics at Home</div><a href="https://wa.me/916383915367?text=Diagnostics%20at%20Home" class="mini-btn" target="_blank">Book Now</a></div>
-    <div class="mini-service reveal reveal-delay-1"><div class="mini-icon">♿</div><div class="mini-name">Speciality Rehab</div><a href="https://wa.me/916383915367?text=Speciality%20Rehab%20at%20Home" class="mini-btn" target="_blank">Book Now</a></div>
-    <div class="mini-service reveal reveal-delay-2"><div class="mini-icon">👨‍⚕️</div><div class="mini-name">Specialised Nurse</div><a href="https://wa.me/916383915367?text=Specialised%20Nurse%20at%20Home" class="mini-btn" target="_blank">Enquire Now</a></div>
-    <div class="mini-service reveal reveal-delay-3"><div class="mini-icon">✈️</div><div class="mini-name">Travel Nurses</div><a href="https://wa.me/916383915367?text=Travel%20Nurses" class="mini-btn" target="_blank">Enquire Now</a></div>
-    <div class="mini-service reveal"><div class="mini-icon">👴🏠</div><div class="mini-name">Senior Care Subscription</div><a href="https://wa.me/916383915367?text=Senior%20Care%20Subscription" class="mini-btn" target="_blank">Enquire Now</a></div>
-    <div class="mini-service reveal reveal-delay-1"><div class="mini-icon">🩺</div><div class="mini-name">Nurse Procedures</div><a href="https://wa.me/916383915367?text=Nurse%20Procedures%20at%20Home" class="mini-btn" target="_blank">Book Now</a></div>
   </div>
 </section>
 
-<!-- WHY CHOOSE US / ABOUT -->
-<section class="why-us" id="why-us">
-  <div class="why-grid">
-    <div>
-      <span class="section-label reveal">Why Choose Us</span>
-      <h2 class="section-title reveal">Tamil Nadu's Most <span>Trusted Home</span><br>Healthcare Partner</h2>
-      <p class="section-sub reveal" style="margin-bottom:40px">We bring hospital-quality care to your home with certified professionals, hygienic standards, and compassionate service across all 38 districts of Tamil Nadu.</p>
-      <div class="why-features">
-        <div class="feature-item reveal">
-          <div class="feature-icon">🏅</div>
+<!-- DOCTORS -->
+<section class="doctors" id="doctors">
+  <div class="section-inner">
+    <div class="sh reveal">
+      <div class="section-chip" style="margin:0 auto 16px">👩‍⚕️ Our Team</div>
+      <h2>Meet Our Expert Care Team</h2>
+      <p>Certified professionals dedicated to delivering compassionate, world-class healthcare in the comfort of your home.</p>
+    </div>
+    <div class="doc-grid">
+      <div class="doc-card reveal">
+        <div class="doc-avatar"><div class="doc-avatar-ph">👨‍⚕️</div><div class="doc-badge">✓</div></div>
+        <div class="doc-name">Dr. Rajan Kumar</div>
+        <div class="doc-role">General Physician & Home Care Lead</div>
+        <div class="doc-exp">12+ Years Experience • MBBS, MD</div>
+        <div class="doc-tags"><span class="doc-tag">General Medicine</span><span class="doc-tag">Chronic Care</span><span class="doc-tag">Home Visits</span></div>
+        <a href="https://wa.me/916383915367?text=I want to consult Dr. Rajan Kumar" class="doc-btn" target="_blank">📞 Consult Now</a>
+      </div>
+      <div class="doc-card reveal">
+        <div class="doc-avatar"><div class="doc-avatar-ph">👩‍⚕️</div><div class="doc-badge">✓</div></div>
+        <div class="doc-name">Sr. Priya Devi</div>
+        <div class="doc-role">Head Nurse & ICU Specialist</div>
+        <div class="doc-exp">9+ Years Experience • B.Sc Nursing</div>
+        <div class="doc-tags"><span class="doc-tag">ICU Care</span><span class="doc-tag">Post-Op</span><span class="doc-tag">Wound Care</span></div>
+        <a href="https://wa.me/916383915367?text=I need Nursing Care - Sr. Priya" class="doc-btn" target="_blank">📞 Book Now</a>
+      </div>
+      <div class="doc-card reveal">
+        <div class="doc-avatar"><div class="doc-avatar-ph">🧑‍⚕️</div><div class="doc-badge">✓</div></div>
+        <div class="doc-name">Mr. Karthik Raj</div>
+        <div class="doc-role">Senior Physiotherapist</div>
+        <div class="doc-exp">8+ Years Experience • BPT, MPT</div>
+        <div class="doc-tags"><span class="doc-tag">Neuro Rehab</span><span class="doc-tag">Ortho</span><span class="doc-tag">Sports</span></div>
+        <a href="https://wa.me/916383915367?text=I need Physiotherapy - Mr. Karthik" class="doc-btn" target="_blank">📞 Book Now</a>
+      </div>
+      <div class="doc-card reveal">
+        <div class="doc-avatar"><div class="doc-avatar-ph">👩‍⚕️</div><div class="doc-badge">✓</div></div>
+        <div class="doc-name">Sr. Meena Lakshmi</div>
+        <div class="doc-role">Geriatric & Palliative Care Nurse</div>
+        <div class="doc-exp">7+ Years Experience • GNM, Certified</div>
+        <div class="doc-tags"><span class="doc-tag">Elder Care</span><span class="doc-tag">Palliative</span><span class="doc-tag">Dementia</span></div>
+        <a href="https://wa.me/916383915367?text=I need Geriatric Care - Sr. Meena" class="doc-btn" target="_blank">📞 Book Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="section-inner">
+    <div class="sh reveal">
+      <div class="section-chip" style="margin:0 auto 16px">📸 Gallery</div>
+      <h2>Care In Action</h2>
+      <p>A glimpse of our dedicated team providing professional, compassionate home healthcare across Tamil Nadu.</p>
+    </div>
+    <div class="gal-grid">
+      <!-- Gallery images from images/gallery/ folder -->
+      <!-- Image suggestions: South Indian homes, Tamil Nadu family settings, traditional interiors -->
+
+      <!-- gallery-1.jpg: Wide shot — nurse in white uniform attending elderly Tamil Nadu patient in traditional home, warm yellow lighting -->
+      <div class="gal-item reveal">
+        <img src="images/gallery/gallery-1.jpg" alt="Professional Home Nursing Care" class="gal-img"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="gal-ph" style="display:none;background:linear-gradient(135deg,#1a4d1e,#3a8c3f);font-size:80px">🏠</div>
+        <div class="gal-overlay">
           <div>
-            <div class="feature-title">Certified & Experienced Professionals</div>
-            <div class="feature-desc">All our nurses hold B.Sc. Nursing degrees with hospital experience. Background-verified and trained in home care protocols.</div>
-          </div>
-        </div>
-        <div class="feature-item reveal reveal-delay-1">
-          <div class="feature-icon">🧹</div>
-          <div>
-            <div class="feature-title">Hygienic & Safe Care Standards</div>
-            <div class="feature-desc">Strict infection control practices, sterile equipment, and clean care protocols — maintaining hospital-grade hygiene at home.</div>
-          </div>
-        </div>
-        <div class="feature-item reveal reveal-delay-2">
-          <div class="feature-icon">⚡</div>
-          <div>
-            <div class="feature-title">Fast Response — 24/7 Availability</div>
-            <div class="feature-desc">Emergency nursing support available within hours. Our team is always on call — day, night, weekends, and holidays.</div>
-          </div>
-        </div>
-        <div class="feature-item reveal reveal-delay-3">
-          <div class="feature-icon">🌍</div>
-          <div>
-            <div class="feature-title">All Over Tamil Nadu Coverage</div>
-            <div class="feature-desc">From Chennai to Kanyakumari, Coimbatore to Madurai — we serve all major cities and towns across Tamil Nadu.</div>
+            <div class="gal-caption">Professional Home Nursing Care</div>
+            <span class="gal-caption-small">Compassionate care in your home</span>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="why-visual reveal">
-      <div class="why-card-main">
-        <div class="founder-profile">
-          <div class="founder-avatar">👨‍⚕️</div>
+      <!-- gallery-2.jpg: Physiotherapist helping elderly patient do exercises, South Indian home setting -->
+      <div class="gal-item reveal">
+        <img src="images/gallery/gallery-2.jpg" alt="Physiotherapy Session at Home" class="gal-img"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="gal-ph" style="display:none;background:linear-gradient(135deg,#c8e6c9,#a5d6a7)">🦿</div>
+        <div class="gal-overlay">
           <div>
-            <div class="founder-name">Mr. K. Sridhar</div>
-            <div class="founder-title">Founder & Director</div>
-            <span class="founder-cred">B.Sc. (N) · MBA</span>
+            <div class="gal-caption">Physiotherapy at Home</div>
+            <span class="gal-caption-small">Expert rehabilitation sessions</span>
           </div>
         </div>
-        <div style="color:rgba(255,255,255,0.8);font-size:14px;line-height:1.7;margin-bottom:28px;font-style:italic;">
-          "Our mission is to bring compassionate, dignified, and professional healthcare to every Tamil Nadu family — ensuring patients receive the best care in the comfort of their own home."
+      </div>
+
+      <!-- gallery-3.jpg: Nurse organizing medications for patient, traditional Tamil Nadu home background -->
+      <div class="gal-item reveal">
+        <img src="images/gallery/gallery-3.jpg" alt="Medication Management" class="gal-img"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="gal-ph" style="display:none;background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">💊</div>
+        <div class="gal-overlay">
+          <div>
+            <div class="gal-caption">Medication Management</div>
+            <span class="gal-caption-small">Precise and timely care</span>
+          </div>
         </div>
-        <div class="coverage-grid">
-          <div class="coverage-item">
-            <div class="coverage-icon">🏙️</div>
-            <div class="coverage-label">All Tamil Nadu</div>
+      </div>
+
+      <!-- gallery-4.jpg: Medical equipment (cardiac monitor) set up in South Indian home -->
+      <div class="gal-item reveal">
+        <img src="images/gallery/gallery-4.jpg" alt="Cardiac Monitoring at Home" class="gal-img"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="gal-ph" style="display:none;background:linear-gradient(135deg,#1a4d1e,#2d6e31)">❤️</div>
+        <div class="gal-overlay">
+          <div>
+            <div class="gal-caption">Cardiac Monitoring</div>
+            <span class="gal-caption-small">Hospital-grade equipment at home</span>
           </div>
-          <div class="coverage-item">
-            <div class="coverage-icon">⭐</div>
-            <div class="coverage-label">4.9 Google Rating</div>
+        </div>
+      </div>
+
+      <!-- gallery-5.jpg: Doctor in white coat consulting patient at South Indian home, family present -->
+      <div class="gal-item reveal">
+        <img src="images/gallery/gallery-5.jpg" alt="Doctor Home Visit Tamil Nadu" class="gal-img"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="gal-ph" style="display:none;background:linear-gradient(135deg,#bbdefb,#90caf9)">🩺</div>
+        <div class="gal-overlay">
+          <div>
+            <div class="gal-caption">Doctor Home Visit</div>
+            <span class="gal-caption-small">Expert consultation at your doorstep</span>
           </div>
-          <div class="coverage-item">
-            <div class="coverage-icon">🌙</div>
-            <div class="coverage-label">24/7 Service</div>
-          </div>
-          <div class="coverage-item">
-            <div class="coverage-icon">💚</div>
-            <div class="coverage-label">500+ Patients</div>
+        </div>
+      </div>
+
+      <!-- gallery-6.jpg: Nurse helping elderly Tamil Nadu grandparent walk, warm family setting -->
+      <div class="gal-item reveal">
+        <img src="images/gallery/gallery-6.jpg" alt="Elder Care Services Tamil Nadu" class="gal-img"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="gal-ph" style="display:none;background:linear-gradient(135deg,#f3e5f5,#ce93d8)">👴</div>
+        <div class="gal-overlay">
+          <div>
+            <div class="gal-caption">Elder Care Services</div>
+            <span class="gal-caption-small">Dignity and comfort for seniors</span>
           </div>
         </div>
       </div>
@@ -1511,265 +742,118 @@ footer {
 
 <!-- HOW IT WORKS -->
 <section class="process" id="process">
-  <div style="text-align:center">
-    <span class="section-label reveal">How It Works</span>
-    <h2 class="section-title reveal">Simple <span>4-Step</span> Process<br>to Get Home Care</h2>
-    <p class="section-sub reveal" style="margin:0 auto">Getting professional healthcare at your doorstep is just a WhatsApp message away.</p>
-  </div>
-  <div class="process-steps">
-    <div class="process-step reveal">
-      <div class="process-num">1<div class="process-icon">📱</div></div>
-      <div class="process-title">Contact Us</div>
-      <p class="process-desc">Call or WhatsApp us at +91 63839 15367. Share the patient's condition, location, and care requirements.</p>
+  <div class="section-inner">
+    <div class="sh reveal">
+      <div class="section-chip" style="margin:0 auto 16px">🔄 How It Works</div>
+      <h2>Care At Your Door in 4 Simple Steps</h2>
+      <p>From first call to bedside care — we make getting professional home healthcare simple and stress-free.</p>
     </div>
-    <div class="process-step reveal reveal-delay-2">
-      <div class="process-num">2<div class="process-icon">📋</div></div>
-      <div class="process-title">Assessment</div>
-      <p class="process-desc">Our care coordinator assesses the patient's needs and prepares a personalized care plan with the right professional.</p>
+    <div class="psteps">
+      <div class="pstep reveal">
+        <div class="pnum">1<div class="picon">📞</div></div>
+        <div class="ptitle">Contact Us</div>
+        <div class="pdesc">Call or WhatsApp us anytime — 24/7. Our care coordinators respond within minutes.</div>
+      </div>
+      <div class="pstep reveal">
+        <div class="pnum">2<div class="picon">📋</div></div>
+        <div class="ptitle">Care Assessment</div>
+        <div class="pdesc">Our experts assess the patient's condition and design a personalized home care plan.</div>
+      </div>
+      <div class="pstep reveal">
+        <div class="pnum">3<div class="picon">🏠</div></div>
+        <div class="ptitle">We Come to You</div>
+        <div class="pdesc">Certified nurses and therapists arrive at your home with all required equipment ready.</div>
+      </div>
+      <div class="pstep reveal">
+        <div class="pnum">4<div class="picon">💚</div></div>
+        <div class="ptitle">Ongoing Care</div>
+        <div class="pdesc">We monitor, adjust, and continue care — keeping your family informed every step of the way.</div>
+      </div>
     </div>
-    <div class="process-step reveal reveal-delay-3">
-      <div class="process-num">3<div class="process-icon">🚗</div></div>
-      <div class="process-title">Nurse Arrives</div>
-      <p class="process-desc">Your assigned nurse or doctor arrives at your home, fully equipped and ready to provide professional healthcare.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-4">
-      <div class="process-num">4<div class="process-icon">📊</div></div>
-      <div class="process-title">Ongoing Care</div>
-      <p class="process-desc">Regular health monitoring, daily reports to family, and continuous support throughout the treatment duration.</p>
-    </div>
-  </div>
-  <div style="text-align:center;margin-top:50px" class="reveal">
-    <a href="https://wa.me/916383915367?text=I%20want%20to%20get%20started%20with%20home%20care" class="btn-primary" target="_blank" style="display:inline-flex">
-      💬 Get Started on WhatsApp
-    </a>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials" id="testimonials">
-  <div class="testimonials-header" style="text-align:center">
-    <span class="section-label reveal">Patient Reviews</span>
-    <h2 class="section-title reveal">What Our Patients <span>Say About Us</span></h2>
-    <p class="section-sub reveal" style="margin:0 auto 8px">Real stories from real families across Tamil Nadu — verified Google Reviews</p>
-    <div class="reveal" style="display:flex;align-items:center;justify-content:center;gap:8px;font-size:22px;color:#f59e0b;margin-top:12px">
-      ★★★★★ <span style="font-size:16px;color:var(--text-mid);font-weight:700">4.9 / 5 on Google</span>
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="section-inner">
+    <div class="sh reveal">
+      <div class="section-chip" style="margin:0 auto 16px">⭐ Reviews</div>
+      <h2>What Our Patients Say</h2>
+      <p>Real stories from real families across Tamil Nadu who trusted Green Life with their loved ones.</p>
     </div>
   </div>
-  <div class="reviews-track-wrapper">
-    <div class="reviews-track" id="reviewsTrack">
-      <!-- Reviews set 1 -->
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"The nurse assigned by Green Life was extremely professional and caring. My mother recovered faster with their home nursing support. Highly recommended for anyone in Chennai!"</p>
-        <div class="reviewer-info">
-          <div class="reviewer-avatar">👩</div>
-          <div><div class="reviewer-name">Priya Subramaniam</div><div class="reviewer-place">Chennai, Tamil Nadu</div></div>
-          <div class="google-badge">G ★5</div>
-        </div>
+  <div class="rtrack-wrap">
+    <div class="rtrack" id="rtrack"></div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-sec" id="location">
+  <div class="map-wrap">
+    <div class="map-info reveal-l">
+      <div class="section-chip">📍 Find Us</div>
+      <h2>Visit or Call Us — We're Here for You</h2>
+      <p>Our home care team operates across all of Tamil Nadu. We come to you — but you can also reach us at our base office anytime.</p>
+      <div class="map-details">
+        <div class="md"><div class="md-icon">📍</div><div><strong>Address:</strong> Green Life Home Health Care, Tamil Nadu, India</div></div>
+        <div class="md"><div class="md-icon">📞</div><div><strong>Phone:</strong> <a href="tel:+916383915367" style="color:var(--g);font-weight:700">+91 63839 15367</a></div></div>
+        <div class="md"><div class="md-icon">📧</div><div><strong>Email:</strong> <a href="mailto:healthcaregreenlife3@gmail.com" style="color:var(--g)">healthcaregreenlife3@gmail.com</a></div></div>
+        <div class="md"><div class="md-icon">⏰</div><div><strong>Available:</strong> 24 Hours / 7 Days a Week</div></div>
+        <div class="md"><div class="md-icon">🗺️</div><div><strong>Service Area:</strong> All Over Tamil Nadu</div></div>
       </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Excellent post-operative care for my father after hip replacement surgery. The nurse was punctual, hygienic, and very knowledgeable. Green Life is the best home care in Tamil Nadu."</p>
-        <div class="reviewer-info">
-          <div class="reviewer-avatar">👨</div>
-          <div><div class="reviewer-name">Karthik Rajan</div><div class="reviewer-place">Coimbatore, Tamil Nadu</div></div>
-          <div class="google-badge">G ★5</div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"24/7 availability is what sets them apart. When my father had a health emergency at 2 AM, they responded immediately and sent a nurse within 2 hours. Truly exceptional service."</p>
-        <div class="reviewer-info">
-          <div class="reviewer-avatar">👩</div>
-          <div><div class="reviewer-name">Kavitha Murugan</div><div class="reviewer-place">Madurai, Tamil Nadu</div></div>
-          <div class="google-badge">G ★5</div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"The physiotherapy sessions at home by Green Life have been life-changing for my grandmother. No need to travel to the hospital anymore. Very satisfied with their dedicated care."</p>
-        <div class="reviewer-info">
-          <div class="reviewer-avatar">👨</div>
-          <div><div class="reviewer-name">Senthil Kumar</div><div class="reviewer-place">Salem, Tamil Nadu</div></div>
-          <div class="google-badge">G ★5</div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"We hired Green Life for elderly care for my 85-year-old grandfather. The nurse treats him like family — with immense patience and love. The whole family is very grateful."</p>
-        <div class="reviewer-info">
-          <div class="reviewer-avatar">👩</div>
-          <div><div class="reviewer-name">Lakshmi Devi</div><div class="reviewer-place">Trichy, Tamil Nadu</div></div>
-          <div class="google-badge">G ★5</div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Mr. Sridhar personally followed up to ensure my mother was comfortable. The team is very responsive on WhatsApp and the nurses maintain excellent hygiene. 100% recommended!"</p>
-        <div class="reviewer-info">
-          <div class="reviewer-avatar">👨</div>
-          <div><div class="reviewer-name">Arun Krishnaswamy</div><div class="reviewer-place">Perambur, Chennai</div></div>
-          <div class="google-badge">G ★5</div>
-        </div>
-      </div>
-      <!-- Duplicate for seamless loop -->
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"The nurse assigned by Green Life was extremely professional and caring. My mother recovered faster with their home nursing support. Highly recommended for anyone in Chennai!"</p>
-        <div class="reviewer-info">
-          <div class="reviewer-avatar">👩</div>
-          <div><div class="reviewer-name">Priya Subramaniam</div><div class="reviewer-place">Chennai, Tamil Nadu</div></div>
-          <div class="google-badge">G ★5</div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Excellent post-operative care for my father after hip replacement surgery. The nurse was punctual, hygienic, and very knowledgeable. Green Life is the best home care in Tamil Nadu."</p>
-        <div class="reviewer-info">
-          <div class="reviewer-avatar">👨</div>
-          <div><div class="reviewer-name">Karthik Rajan</div><div class="reviewer-place">Coimbatore, Tamil Nadu</div></div>
-          <div class="google-badge">G ★5</div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"24/7 availability is what sets them apart. When my father had a health emergency at 2 AM, they responded immediately and sent a nurse within 2 hours. Truly exceptional service."</p>
-        <div class="reviewer-info">
-          <div class="reviewer-avatar">👩</div>
-          <div><div class="reviewer-name">Kavitha Murugan</div><div class="reviewer-place">Madurai, Tamil Nadu</div></div>
-          <div class="google-badge">G ★5</div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"The physiotherapy sessions at home by Green Life have been life-changing for my grandmother. No need to travel to the hospital anymore. Very satisfied with their dedicated care."</p>
-        <div class="reviewer-info">
-          <div class="reviewer-avatar">👨</div>
-          <div><div class="reviewer-name">Senthil Kumar</div><div class="reviewer-place">Salem, Tamil Nadu</div></div>
-          <div class="google-badge">G ★5</div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"We hired Green Life for elderly care for my 85-year-old grandfather. The nurse treats him like family — with immense patience and love. The whole family is very grateful."</p>
-        <div class="reviewer-info">
-          <div class="reviewer-avatar">👩</div>
-          <div><div class="reviewer-name">Lakshmi Devi</div><div class="reviewer-place">Trichy, Tamil Nadu</div></div>
-          <div class="google-badge">G ★5</div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Mr. Sridhar personally followed up to ensure my mother was comfortable. The team is very responsive on WhatsApp and the nurses maintain excellent hygiene. 100% recommended!"</p>
-        <div class="reviewer-info">
-          <div class="reviewer-avatar">👨</div>
-          <div><div class="reviewer-name">Arun Krishnaswamy</div><div class="reviewer-place">Perambur, Chennai</div></div>
-          <div class="google-badge">G ★5</div>
-        </div>
-      </div>
+      <a href="https://maps.app.goo.gl/FXmMkfA8wN2uE3Ny9" target="_blank" class="btn1" style="margin-top:24px;display:inline-flex;width:fit-content">🗺️ Open in Google Maps</a>
+    </div>
+    <div class="map-embed reveal-r">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15678.4!2d80.2707!3d13.1066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52644f41c0d34d%3A0xd28b41ec37e09e1a!2sPerambur%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Green Life Location"></iframe>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <div class="contact-grid">
-    <div>
-      <span class="section-label reveal">Contact Us</span>
-      <h2 class="reveal">Get Trusted Care<br>Right At Your Door</h2>
-      <p class="contact-sub reveal">Reach out via phone, WhatsApp, or email — our care coordinators are available 24/7 to assist you.</p>
-
-      <div class="contact-items">
-        <a href="tel:+916383915367" class="contact-item reveal">
-          <div class="contact-item-icon">📞</div>
-          <div>
-            <div class="contact-item-label">Call Us Anytime</div>
-            <div class="contact-item-val">+91 63839 15367</div>
-          </div>
+  <div class="cgrid">
+    <div class="reveal-l">
+      <h2>Book Your Home Care Today</h2>
+      <p class="contact-desc">Ready to experience professional healthcare at home? Reach out via WhatsApp, phone, or email — our team responds within minutes.</p>
+      <div class="citems">
+        <a href="https://wa.me/916383915367" class="citem" target="_blank">
+          <div class="ci-icon">💬</div>
+          <div><div class="ci-label">WhatsApp (Fastest)</div><div class="ci-val">+91 63839 15367</div></div>
         </a>
-        <a href="https://wa.me/916383915367" class="contact-item reveal reveal-delay-1" target="_blank">
-          <div class="contact-item-icon">💬</div>
-          <div>
-            <div class="contact-item-label">WhatsApp</div>
-            <div class="contact-item-val">+91 63839 15367</div>
-          </div>
+        <a href="tel:+916383915367" class="citem">
+          <div class="ci-icon">📞</div>
+          <div><div class="ci-label">Call Us 24/7</div><div class="ci-val">+91 63839 15367</div></div>
         </a>
-        <a href="mailto:healthcaregreenlife3@gmail.com" class="contact-item reveal reveal-delay-2">
-          <div class="contact-item-icon">📧</div>
-          <div>
-            <div class="contact-item-label">Email Us</div>
-            <div class="contact-item-val">healthcaregreenlife3@gmail.com</div>
-          </div>
+        <a href="mailto:healthcaregreenlife3@gmail.com" class="citem">
+          <div class="ci-icon">📧</div>
+          <div><div class="ci-label">Email</div><div class="ci-val">healthcaregreenlife3@gmail.com</div></div>
         </a>
-        <a href="https://www.instagram.com/gree_nlifehealth" class="contact-item reveal reveal-delay-3" target="_blank">
-          <div class="contact-item-icon">📷</div>
-          <div>
-            <div class="contact-item-label">Instagram</div>
-            <div class="contact-item-val">@gree_nlifehealth</div>
-          </div>
+        <a href="https://www.instagram.com/gree_nlifehealth" class="citem" target="_blank">
+          <div class="ci-icon">📷</div>
+          <div><div class="ci-label">Instagram</div><div class="ci-val">@gree_nlifehealth</div></div>
         </a>
-        <div class="contact-item reveal reveal-delay-4" style="text-decoration:none">
-          <div class="contact-item-icon">📍</div>
-          <div>
-            <div class="contact-item-label">Office Address</div>
-            <div class="contact-item-val">No.11/25, Neels Garden 1st Street,<br>Perambur, Chennai – 600 011</div>
-          </div>
+        <div class="citem" style="cursor:default">
+          <div class="ci-icon">🗺️</div>
+          <div><div class="ci-label">Service Area</div><div class="ci-val">All Over Tamil Nadu</div></div>
         </div>
       </div>
-
-      <a href="https://maps.google.com/?q=Perambur+Chennai" class="map-container" target="_blank">
-        <div class="map-pin">📍</div>
-        <div class="map-label">No.11/25 Neels Garden 1st Street</div>
-        <div class="map-sub">Perambur, Chennai – 600 011 · Click to Open in Maps</div>
-      </a>
     </div>
-
-    <div class="reveal">
-      <div class="contact-form">
-        <div class="form-title">📅 Book an Appointment</div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Patient Name *</label>
-            <input type="text" class="form-input" placeholder="Enter patient name" id="f-name">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Phone Number *</label>
-            <input type="tel" class="form-input" placeholder="+91 XXXXX XXXXX" id="f-phone">
-          </div>
+    <div class="fbox reveal-r">
+      <h3>Quick Appointment</h3>
+      <p>Fill this form and we'll WhatsApp you to confirm your booking.</p>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="frow">
+          <div class="fg"><label class="fl">Patient Name</label><input type="text" class="fi" id="fn" placeholder="Full name"></div>
+          <div class="fg"><label class="fl">Phone</label><input type="tel" class="fi" id="fp" placeholder="+91 XXXXX XXXXX"></div>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Service Required</label>
-            <select class="form-select" id="f-service">
-              <option value="">Select a service</option>
-              <option>Nursing Care at Home</option>
-              <option>Physiotherapy at Home</option>
-              <option>Post Operative Care</option>
-              <option>Elderly / Geriatric Care</option>
-              <option>Pediatric Care</option>
-              <option>Doctor Visit at Home</option>
-              <option>Palliative Care</option>
-              <option>ICU Setup at Home</option>
-              <option>Mother & Child Care</option>
-              <option>Trained Attendant</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">City / District</label>
-            <input type="text" class="form-input" placeholder="Your city in Tamil Nadu" id="f-city">
-          </div>
+        <div class="frow">
+          <div class="fg"><label class="fl">Service Required</label><select class="fs" id="fsv"><option value="">Select service</option><option>Nursing Care at Home</option><option>Physiotherapy at Home</option><option>Post Operative Care</option><option>Elderly / Geriatric Care</option><option>Pediatric Care</option><option>Doctor Visit at Home</option><option>Palliative Care</option><option>ICU Setup at Home</option><option>Mother & Child Care</option><option>Trained Attendant</option><option>Home Sample Collection</option><option>Medical Equipment Rental</option></select></div>
+          <div class="fg"><label class="fl">City / District</label><input type="text" class="fi" id="fc2" placeholder="Your city in Tamil Nadu"></div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Message / Patient Condition</label>
-          <textarea class="form-textarea" placeholder="Briefly describe the patient's condition or care needs..." id="f-msg"></textarea>
-        </div>
-        <button class="form-submit" onclick="submitForm()">
-          💬 Send via WhatsApp
-        </button>
-        <p style="text-align:center;font-size:12px;color:#999;margin-top:12px">
-          You'll be redirected to WhatsApp to confirm your appointment.
-        </p>
+        <div class="fg"><label class="fl">Patient Condition / Notes</label><textarea class="ft" id="fm" placeholder="Briefly describe the patient's condition or care needs..."></textarea></div>
+        <button class="fsub" onclick="submitForm()">💬 Send via WhatsApp</button>
+        <p style="text-align:center;font-size:12px;color:#999">You'll be redirected to WhatsApp to confirm.</p>
       </div>
     </div>
   </div>
@@ -1777,173 +861,452 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="footer-logo-wrap">
-        <div class="footer-logo-icon">🌿</div>
-        <div>
-          <div class="footer-brand-name">Green Life Home Health Care</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.1em">NURSING SERVICES</div>
-        </div>
+  <div class="fg2">
+    <div>
+      <div class="fb-logo">
+        <div class="fb-logo-icon">🌿</div>
+        <div><div class="fb-name">Green Life</div><div class="fb-sub">Home Health Care</div></div>
       </div>
-      <p class="footer-desc">Leading the way to better health. Professional, compassionate, and hygienic patient care at home with experienced nursing support — serving all of Tamil Nadu 24/7.</p>
-      <div class="footer-social">
-        <a href="https://www.instagram.com/gree_nlifehealth" class="social-btn" target="_blank" title="Instagram">📷</a>
-        <a href="https://wa.me/916383915367" class="social-btn" target="_blank" title="WhatsApp">💬</a>
-        <a href="tel:+916383915367" class="social-btn" title="Call">📞</a>
-        <a href="mailto:healthcaregreenlife3@gmail.com" class="social-btn" title="Email">📧</a>
+      <p class="fb-desc">Leading the way to better health. Professional, compassionate care at home — serving all of Tamil Nadu 24/7. Revitalize Your Health.</p>
+      <div class="fsoc">
+        <a href="https://www.instagram.com/gree_nlifehealth" target="_blank" title="Instagram">📷</a>
+        <a href="https://wa.me/916383915367" target="_blank" title="WhatsApp">💬</a>
+        <a href="tel:+916383915367" title="Call">📞</a>
+        <a href="mailto:healthcaregreenlife3@gmail.com" title="Email">📧</a>
       </div>
     </div>
-    <div class="footer-col">
+    <div class="fc">
       <h4>Services</h4>
       <ul>
         <li><a href="#services">Nursing Care at Home</a></li>
         <li><a href="#services">Physiotherapy</a></li>
         <li><a href="#services">Post Operative Care</a></li>
         <li><a href="#services">Elderly Care</a></li>
-        <li><a href="#services">Pediatric Care</a></li>
-        <li><a href="#services">Palliative Care</a></li>
         <li><a href="#services">Doctor Visit</a></li>
         <li><a href="#services">ICU at Home</a></li>
+        <li><a href="#services">Home Sample Collection</a></li>
+        <li><a href="#services">Equipment Rental</a></li>
       </ul>
     </div>
-    <div class="footer-col">
+    <div class="fc">
       <h4>Quick Links</h4>
       <ul>
         <li><a href="#home">Home</a></li>
-        <li><a href="#why-us">About Us</a></li>
+        <li><a href="#about">About Us</a></li>
         <li><a href="#process">How It Works</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#location">Our Location</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="https://wa.me/916383915367?text=Book%20Appointment" target="_blank">Book Appointment</a></li>
+        <li><a href="https://wa.me/916383915367" target="_blank">Book Appointment</a></li>
       </ul>
     </div>
-    <div class="footer-col">
+    <div class="fc">
       <h4>Contact</h4>
       <ul>
         <li><a href="tel:+916383915367">📞 +91 63839 15367</a></li>
         <li><a href="mailto:healthcaregreenlife3@gmail.com">📧 healthcaregreenlife3@gmail.com</a></li>
         <li><a href="https://www.instagram.com/gree_nlifehealth" target="_blank">📷 @gree_nlifehealth</a></li>
-        <li><a href="https://maps.google.com/?q=Perambur+Chennai" target="_blank">📍 Perambur, Chennai – 11</a></li>
+        <li><a href="https://maps.app.goo.gl/FXmMkfA8wN2uE3Ny9" target="_blank">📍 Tamil Nadu, India</a></li>
       </ul>
-      <div style="margin-top:20px;background:rgba(92,184,92,0.15);border:1px solid rgba(92,184,92,0.3);border-radius:12px;padding:14px;text-align:center">
-        <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Service Area</div>
-        <div style="color:var(--leaf-light);font-weight:700;font-size:13px">🗺️ All Over Tamil Nadu</div>
+      <div style="margin-top:20px;background:rgba(92,184,92,.12);border:1px solid rgba(92,184,92,.25);border-radius:12px;padding:14px;text-align:center">
+        <div style="font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Service Area</div>
+        <div style="color:var(--gl);font-weight:700;font-size:13px">🗺️ All Over Tamil Nadu</div>
       </div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <div>© 2025 Green Life Home Health Care Nursing Services. All Rights Reserved.</div>
+  <div class="fbot">
+    <div>© 2025 Green Life Home Health Care. All Rights Reserved.</div>
     <div>Designed with 💚 for Better Health in Tamil Nadu</div>
   </div>
 </footer>
 
+<a href="https://wa.me/916383915367?text=Hi%20Green%20Life!%20I%20need%20home%20healthcare%20services." class="wa" target="_blank" title="Chat on WhatsApp">💬</a>
+
 <script>
-// === CURSOR ===
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-let mx=0, my=0, rx=0, ry=0;
-document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
-function animRing() { rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); }
-animRing();
-document.querySelectorAll('a,button,.service-card,.feature-item,.process-step,.review-card,.contact-item,.mini-service').forEach(el => {
-  el.addEventListener('mouseenter',()=>{cursor.classList.add('expand');ring.classList.add('expand')});
-  el.addEventListener('mouseleave',()=>{cursor.classList.remove('expand');ring.classList.remove('expand')});
+/* ========================
+   SERVICE DATA
+   Image paths: images/services/xxx.jpg
+   Suggestions for each image below
+======================== */
+const services=[
+{
+  id:'nursing',
+  img:'images/services/nursing.jpg',
+  /* Image: B.Sc nurse in white uniform doing wound dressing for patient in South Indian home */
+  imgAlt:'Nursing Care at Home Tamil Nadu',
+  imgPh:'🏠',imgBg:'linear-gradient(135deg,#e8f5e9,#c8e6c9)',
+  badge:'Most Popular',
+  tag:'Nursing',
+  title:'Nursing Care at Home',
+  short:'Professional nursing assistance from trained, certified B.Sc nurses for patients recovering at home. Safe, hygienic, and compassionate care around the clock.',
+  icon:'🏠',color:'linear-gradient(135deg,var(--g),var(--gd))',
+  desc:`Our qualified B.Sc nurses provide comprehensive medical care at home. From daily medication management to complex wound dressing, IV therapy, catheter care, nasogastric tube management, and continuous vital monitoring — all delivered with clinical precision and deep compassion. Our nurses maintain strict hygiene protocols and communicate health updates to your doctor regularly.`,
+  checks:['Wound Dressing & Debridement','IV Therapy & Injections','Catheter Care','Vital Signs Monitoring','Medication Management','Ryle\'s Tube / NG Tube Care'],
+  steps:[
+    {title:'Contact & Consultation',desc:'Call or WhatsApp us. Our nurse coordinator will understand the patient\'s condition and needs within minutes.'},
+    {title:'Nurse Assignment & Care Plan',desc:'We assign the best-suited certified nurse and create a personalized care protocol based on your doctor\'s advice.'},
+    {title:'Home Visit & Care Begins',desc:'Nurse arrives at the scheduled time with all necessary equipment. Care begins with full hygiene protocols followed.'},
+    {title:'Daily Reporting',desc:'Daily health reports and updates are shared with you and your doctor. Continuity of care is ensured.'}
+  ],
+  why:[
+    {emoji:'🌿',title:'Enhances Self-Sufficiency',desc:'Our trained nurses empower patients to regain independence with guided daily routines and personalized care plans.'},
+    {emoji:'❤️',title:'Specialized Chronic Care',desc:'Dedicated management for diabetes, hypertension, COPD, cardiac conditions, and more — right at home.'},
+    {emoji:'🛡️',title:'Reducing Risk of Injuries',desc:'Trained professionals assess and minimize fall risks, medication errors, and complications in home settings.'},
+    {emoji:'📈',title:'Continuous Health Monitoring',desc:'Regular vitals tracking, health assessments, and timely reporting to doctors keep your loved ones safe.'}
+  ],
+  improve:[
+    {emoji:'🏠',title:'Comfort of Home',desc:'Patients recover faster and feel more at ease in their own familiar environment with family nearby.'},
+    {emoji:'🧘',title:'Quality of Life',desc:'Holistic care approach addressing physical, emotional, and social wellbeing.'},
+    {emoji:'💪',title:'Retain Independence',desc:'Programs that restore and preserve daily functions and autonomous living.'},
+    {emoji:'🤝',title:'Supportive Companion',desc:'Our nurses are more than caregivers — they bring warmth and comfort.'},
+    {emoji:'🧼',title:'Hygienic Environment',desc:'Strict protocols for clean, sterile, and infection-free care environments.'},
+    {emoji:'💰',title:'Cost Effective',desc:'Quality hospital-level care at home saves significant costs versus long hospital stays.'}
+  ],
+  wa:'https://wa.me/916383915367?text=I%20need%20Nursing%20Care%20at%20Home.%20Please%20help%20me%20book%20an%20appointment.'
+},
+{
+  id:'physio',
+  img:'images/services/physio.jpg',
+  /* Image: Physiotherapist helping elderly patient do exercises in South Indian living room */
+  imgAlt:'Physiotherapy at Home Tamil Nadu',
+  imgPh:'🦿',imgBg:'linear-gradient(135deg,#e3f2fd,#bbdefb)',
+  badge:'Highly Rated',
+  tag:'Physio',
+  title:'Physiotherapy at Home',
+  short:'Expert physiotherapists visit your home to help restore movement, reduce pain, and improve quality of life after injury, surgery, or illness.',
+  icon:'🦿',color:'linear-gradient(135deg,#1976d2,#0d47a1)',
+  desc:`Our experienced physiotherapists bring clinical-grade rehabilitation to your home. Whether recovering from a stroke, joint replacement, sports injury, or managing chronic pain — our therapists design evidence-based exercise and therapy programs tailored to your specific needs and recovery goals, all in the comfort of your own space.`,
+  checks:['Post-Stroke Neuro Rehab','Orthopedic & Joint Pain Therapy','Post-Operative Rehabilitation','Geriatric Mobility Programs','Balance & Fall Prevention','Chest Physiotherapy'],
+  steps:[
+    {title:'Initial Assessment',desc:'Our physiotherapist visits to assess strength, mobility, pain levels, and functional limitations in your home environment.'},
+    {title:'Personalized Plan',desc:'A customized rehabilitation program is created based on your diagnosis, goals, and home setup.'},
+    {title:'Regular Sessions',desc:'Scheduled therapy sessions at your home with hands-on treatment, exercises, and mobility training.'},
+    {title:'Progress Review',desc:'Regular progress evaluations and plan adjustments to ensure optimal recovery outcomes.'}
+  ],
+  why:[
+    {emoji:'🏃',title:'Faster Recovery',desc:'Home-based physiotherapy helps patients recover up to 40% faster due to familiar and stress-free settings.'},
+    {emoji:'🎯',title:'Personalized Programs',desc:'Every therapy plan is customized to individual needs — not a one-size-fits-all approach.'},
+    {emoji:'👨‍👩‍👧',title:'Family Involvement',desc:'Family members are educated on exercises and precautions to support recovery between sessions.'},
+    {emoji:'📊',title:'Measurable Progress',desc:'Regular assessments with documented progress reports shared with your attending physician.'}
+  ],
+  improve:[
+    {emoji:'🚶',title:'Improved Mobility',desc:'Regain strength and movement with targeted exercises.'},
+    {emoji:'😌',title:'Pain Reduction',desc:'Non-invasive techniques to manage and reduce chronic pain.'},
+    {emoji:'⚖️',title:'Better Balance',desc:'Reduce fall risk with balance training programs.'},
+    {emoji:'💪',title:'Muscle Strength',desc:'Rebuild muscle mass and endurance safely at home.'},
+    {emoji:'🧠',title:'Neuro Recovery',desc:'Specialized stroke and neurological rehabilitation programs.'},
+    {emoji:'🏠',title:'Home Adaptation',desc:'Advice on home modifications for safer movement.'}
+  ],
+  wa:'https://wa.me/916383915367?text=I%20need%20Physiotherapy%20at%20Home.%20Please%20book%20an%20appointment.'
+},
+{
+  id:'postop',
+  img:'images/services/postop.jpg',
+  /* Image: Nurse doing wound dressing after surgery in patient's bedroom, South Indian home */
+  imgAlt:'Post Operative Care at Home',
+  imgPh:'🏥',imgBg:'linear-gradient(135deg,#fce4ec,#f8bbd9)',
+  badge:'Post Surgery',
+  tag:'Post-Op',
+  title:'Post Operative Care',
+  short:'Comprehensive recovery support after surgery, ensuring a smooth healing process at home with medical-grade attention.',
+  icon:'🏥',color:'linear-gradient(135deg,#c2185b,#880e4f)',
+  desc:`Recovering from surgery at home is safer and more comfortable with Green Life's post-operative care. Our trained nurses provide expert wound care, pain management support, medication monitoring, and early complication detection — all while keeping your surgeon informed about your recovery progress.`,
+  checks:['Surgical Wound Management','Drain & Catheter Care','Pain Management Support','Medication Adherence Monitoring','Early Complication Detection','Diet & Nutrition Guidance'],
+  steps:[
+    {title:'Discharge Planning',desc:'We coordinate with your hospital before discharge to understand surgical details and post-op requirements.'},
+    {title:'Home Setup Assessment',desc:'Nurse visits to ensure your home is prepared for safe recovery — arranging bed, hygiene supplies, and equipment.'},
+    {title:'Regular Nursing Visits',desc:'Scheduled daily visits for wound care, vital monitoring, medication management, and patient assessment.'},
+    {title:'Doctor Coordination',desc:'Regular updates shared with your surgeon. Immediate escalation protocols if any complication is detected.'}
+  ],
+  why:[
+    {emoji:'🏥',title:'Hospital-Level Care',desc:'Post-op nursing at home is equivalent to hospital care with the added comfort of familiar surroundings.'},
+    {emoji:'🦠',title:'Infection Prevention',desc:'Strict sterile techniques and hygiene protocols minimize the risk of post-surgical infections.'},
+    {emoji:'⏰',title:'Timely Intervention',desc:'Early detection of complications like infection, bleeding, or swelling ensures prompt medical action.'},
+    {emoji:'💊',title:'Medication Safety',desc:'Nurses ensure correct dosage, timing, and adherence to complex post-surgical medication schedules.'}
+  ],
+  improve:[
+    {emoji:'🩹',title:'Faster Healing',desc:'Proper wound care accelerates tissue healing and recovery.'},
+    {emoji:'😴',title:'Better Rest',desc:'Home setting provides better sleep quality for recovery.'},
+    {emoji:'🍲',title:'Nutrition Support',desc:'Dietary guidance for optimal post-surgical healing.'},
+    {emoji:'🚫',title:'Fewer Complications',desc:'Active monitoring reduces readmission risk significantly.'},
+    {emoji:'👨‍👩‍👧',title:'Family Support',desc:'Family involvement in recovery improves patient morale.'},
+    {emoji:'📱',title:'Digital Reports',desc:'Health updates shared digitally with you and your doctor.'}
+  ],
+  wa:'https://wa.me/916383915367?text=I%20need%20Post%20Operative%20Care%20at%20Home.%20Please%20book%20an%20appointment.'
+},
+{
+  id:'elderly',
+  img:'images/services/elderly.jpg',
+  /* Image: Warm scene of nurse helping elderly Tamil Nadu grandparent, traditional home, family around */
+  imgAlt:'Elderly Care at Home Tamil Nadu',
+  imgPh:'👴',imgBg:'linear-gradient(135deg,#fff8e1,#ffecb3)',
+  badge:'Elder Care',
+  tag:'Geriatric',
+  title:'Elderly / Geriatric Care',
+  short:'Specialized, respectful care for senior citizens — designed to maintain dignity, comfort, and independence in their own home.',
+  icon:'👴',color:'linear-gradient(135deg,#f57f17,#e65100)',
+  desc:`Our geriatric care specialists provide compassionate, respectful support for elderly patients at home. From assistance with daily activities to chronic disease management, our trained caregivers ensure seniors maintain their dignity and independence while staying safe and healthy in their familiar home environment.`,
+  checks:['Daily Personal Hygiene Assistance','Chronic Disease Management','Mobility & Fall Prevention','Companionship & Mental Wellness','Regular Health Monitoring','Dementia & Alzheimer\'s Care'],
+  steps:[
+    {title:'Geriatric Assessment',desc:'Comprehensive evaluation of physical health, cognitive status, mobility, and daily living needs.'},
+    {title:'Personalized Care Plan',desc:'Tailored care schedule including medical, social, and personal care aspects for the elderly patient.'},
+    {title:'Regular Caregiver Visits',desc:'Trained caregivers and nurses visit daily or as scheduled to provide consistent, familiar care.'},
+    {title:'Family Coordination',desc:'Regular updates to family members with health status, mood, and any concerns observed.'}
+  ],
+  why:[
+    {emoji:'🏠',title:'Aging in Place',desc:'Seniors thrive emotionally and physically when they can stay in their own familiar homes.'},
+    {emoji:'💜',title:'Dignity & Respect',desc:'Our caregivers treat every senior with the utmost respect, maintaining their sense of self-worth.'},
+    {emoji:'👨‍👩‍👧',title:'Family Peace of Mind',desc:'Families can trust that their loved ones are in safe, caring hands throughout the day.'},
+    {emoji:'🧩',title:'Cognitive Stimulation',desc:'Engaging activities and social interaction help maintain cognitive function and mental wellbeing.'}
+  ],
+  improve:[
+    {emoji:'😊',title:'Emotional Wellbeing',desc:'Companionship reduces loneliness and depression in seniors.'},
+    {emoji:'🚶',title:'Safe Mobility',desc:'Assisted movement prevents falls and maintains independence.'},
+    {emoji:'💊',title:'Medication Adherence',desc:'Timely reminders ensure no medication is missed.'},
+    {emoji:'🍽️',title:'Nutritional Care',desc:'Healthy meal assistance and nutritional monitoring.'},
+    {emoji:'🛁',title:'Personal Hygiene',desc:'Respectful assistance with bathing, grooming, and dressing.'},
+    {emoji:'🩺',title:'Health Monitoring',desc:'Regular vital checks to detect early health changes.'}
+  ],
+  wa:'https://wa.me/916383915367?text=I%20need%20Elderly%20Care%20at%20Home.%20Please%20book%20an%20appointment.'
+},
+{
+  id:'icu',
+  img:'images/services/icu.jpg',
+  /* Image: Medical equipment (ventilator, monitors) set up neatly in a South Indian bedroom, nurse present */
+  imgAlt:'ICU Setup at Home Tamil Nadu',
+  imgPh:'💊',imgBg:'linear-gradient(135deg,#e8eaf6,#c5cae9)',
+  badge:'Critical Care',
+  tag:'ICU',
+  title:'ICU Setup at Home',
+  short:'Advanced ICU-level care at home for critical patients. We bring hospital-grade equipment and expert ICU-trained staff to your doorstep.',
+  icon:'💊',color:'linear-gradient(135deg,#311b92,#4527a0)',
+  desc:`For patients requiring intensive care but wishing to remain at home, Green Life provides complete ICU setup services. Our ICU-trained nurses and technicians bring hospital-grade ventilators, cardiac monitors, oxygen systems, and infusion pumps — creating a clinical ICU environment within the safety of your home, with 24/7 nursing supervision.`,
+  checks:['Ventilator & Oxygen Therapy','Cardiac Monitoring & Support','24/7 ICU-Trained Nurses','Infusion Pump Management','Emergency Escalation Protocol','Physician Consultation Support'],
+  steps:[
+    {title:'Medical Assessment',desc:'Our team reviews all medical records and coordinates with your ICU doctor to understand exact equipment and care requirements.'},
+    {title:'Equipment Setup',desc:'Hospital-grade ICU equipment is installed and tested in your home before patient arrival or same-day for existing patients.'},
+    {title:'24/7 ICU Nursing',desc:'Trained ICU nurses provide round-the-clock intensive monitoring, care, and medication management.'},
+    {title:'Emergency Protocol',desc:'Emergency escalation protocols are in place — immediate coordination with hospitals if the patient\'s condition changes.'}
+  ],
+  why:[
+    {emoji:'🏥',title:'Hospital Grade Equipment',desc:'We use the same ventilators, monitors, and infusion systems used in leading Tamil Nadu hospitals.'},
+    {emoji:'👩‍⚕️',title:'ICU-Trained Nurses',desc:'Only nurses with ICU experience and specialized training are assigned to critical care cases.'},
+    {emoji:'⚡',title:'Emergency Ready',desc:'24/7 emergency escalation protocols with direct hospital coordination for rapid intervention.'},
+    {emoji:'💰',title:'Significant Cost Savings',desc:'Home ICU care costs significantly less than extended hospital ICU stays while maintaining care quality.'}
+  ],
+  improve:[
+    {emoji:'❤️',title:'Cardiac Monitoring',desc:'Continuous ECG and vital signs monitoring.'},
+    {emoji:'💨',title:'Respiratory Support',desc:'Ventilator management and oxygen therapy.'},
+    {emoji:'💧',title:'IV Management',desc:'Precise infusion and IV medication delivery.'},
+    {emoji:'🌡️',title:'Temperature Control',desc:'Continuous body temperature monitoring.'},
+    {emoji:'🧪',title:'Lab Monitoring',desc:'Regular blood work coordination at home.'},
+    {emoji:'🏠',title:'Family Presence',desc:'Loved ones can be present — unlike hospital ICU.'}
+  ],
+  wa:'https://wa.me/916383915367?text=I%20need%20ICU%20Setup%20at%20Home.%20Please%20book%20an%20appointment.'
+},
+{
+  id:'doctor',
+  img:'images/services/doctor.jpg',
+  /* Image: Doctor in white coat with stethoscope visiting patient at South Indian home, family present */
+  imgAlt:'Doctor Home Visit Tamil Nadu',
+  imgPh:'🩺',imgBg:'linear-gradient(135deg,#f3e5f5,#e1bee7)',
+  badge:'Doctor Visit',
+  tag:'Consultation',
+  title:'Doctor Visit at Home',
+  short:'Qualified doctors visit your home for consultations, follow-ups, and medical procedures — eliminating the need to travel when you\'re unwell.',
+  icon:'🩺',color:'linear-gradient(135deg,#6a1b9a,#4a148c)',
+  desc:`Green Life connects you with experienced doctors who visit your home for medical consultations, follow-up visits, and clinical procedures. Ideal for elderly patients, post-operative cases, and those who find traveling to a clinic difficult. Our doctors coordinate with your existing healthcare team for comprehensive, continuity-of-care.`,
+  checks:['General Medicine Consultations','Prescription & Renewal Visits','Emergency Home Doctor Visits','Specialist Referral Coordination','Home Sample Collection & Lab Tests','Minor Procedure Assistance'],
+  steps:[
+    {title:'Book Appointment',desc:'Call or WhatsApp to schedule. Share basic patient info and reason for visit.'},
+    {title:'Doctor Confirmation',desc:'Suitable doctor is confirmed within 1-2 hours with estimated visit time shared with you.'},
+    {title:'Home Consultation',desc:'Doctor arrives with diagnostic equipment — stethoscope, BP monitor, ECG if needed, diagnostic kit.'},
+    {title:'Prescription & Follow-up',desc:'Prescription issued digitally. Follow-up visits scheduled if required. Coordination with specialists arranged.'}
+  ],
+  why:[
+    {emoji:'🚗',title:'No Travel Required',desc:'Especially valuable for elderly, disabled, or post-operative patients who cannot travel to clinics.'},
+    {emoji:'⏰',title:'Saves Time',desc:'No waiting rooms, no parking, no hospital queues — doctor comes to you at the scheduled time.'},
+    {emoji:'🏡',title:'Comfortable Setting',desc:'Patients feel more at ease at home, leading to better communication and more accurate assessments.'},
+    {emoji:'🔗',title:'Care Coordination',desc:'Home doctors coordinate with your existing specialists to maintain continuity of care.'}
+  ],
+  improve:[
+    {emoji:'🩺',title:'Accurate Diagnosis',desc:'Relaxed home setting often reveals more about health than a rushed clinic visit.'},
+    {emoji:'💊',title:'Prescription Delivery',desc:'Medications can be arranged for home delivery after visit.'},
+    {emoji:'🧪',title:'Lab Tests at Home',desc:'Blood samples collected at home and sent to lab.'},
+    {emoji:'📋',title:'Medical Records',desc:'Digital prescriptions and reports shared immediately.'},
+    {emoji:'👨‍👩‍👧',title:'Family Involved',desc:'Family members present to understand care instructions.'},
+    {emoji:'📞',title:'Follow-up Support',desc:'Phone consultations available between home visits.'}
+  ],
+  wa:'https://wa.me/916383915367?text=I%20need%20a%20Doctor%20Visit%20at%20Home.%20Please%20book%20an%20appointment.'
+}
+];
+
+/* Build service grid */
+function buildServices(){
+  const grid=document.getElementById('svgrid');
+  grid.innerHTML=services.map((s,i)=>`
+  <div class="svc reveal" onclick="openModal(${i})">
+    <div class="svc-img-wrap">
+      <img src="${s.img}" alt="${s.imgAlt}" class="svc-img" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="svc-img-ph" style="display:none;background:${s.imgBg}">${s.imgPh}</div>
+      <div class="svc-img-badge">${s.badge}</div>
+    </div>
+    <div class="svc-body">
+      <div class="svc-tag">${s.tag}</div>
+      <h3>${s.title}</h3>
+      <p>${s.short}</p>
+      <div class="svc-actions">
+        <a href="${s.wa}" class="svc-btn" target="_blank" onclick="event.stopPropagation()">📞 Book Now →</a>
+        <button class="svc-detail-btn" onclick="event.stopPropagation();openModal(${i})">ℹ️ Details</button>
+      </div>
+    </div>
+  </div>`).join('');
+}
+buildServices();
+
+/* Modal */
+function openModal(idx){
+  const s=services[idx];
+  const checks=s.checks.map(c=>`<div class="svc-chk">${c}</div>`).join('');
+  const steps=s.steps.map((st,i)=>`
+    <div class="svc-step">
+      <div class="svc-step-num">${i+1}</div>
+      <div class="svc-step-info"><h5>${st.title}</h5><p>${st.desc}</p></div>
+    </div>`).join('');
+  const why=s.why.map(w=>`
+    <div class="svc-why-item">
+      <div class="svc-why-emoji">${w.emoji}</div>
+      <div class="svc-why-title">${w.title}</div>
+      <div class="svc-why-desc">${w.desc}</div>
+    </div>`).join('');
+  const improve=s.improve.map(im=>`
+    <div class="svc-improve-item">
+      <div class="svc-improve-emoji">${im.emoji}</div>
+      <div class="svc-improve-title">${im.title}</div>
+      <div class="svc-improve-desc">${im.desc}</div>
+    </div>`).join('');
+  document.getElementById('modalContent').innerHTML=`
+    <div class="svc-modal-header" style="background:${s.color}">
+      <button class="svc-modal-close" onclick="closeModal()">✕</button>
+      <div class="svc-modal-icon">${s.icon}</div>
+      <div class="svc-modal-tag">✓ Green Life Service</div>
+      <h2 class="svc-modal-title">${s.title}</h2>
+      <p class="svc-modal-subtitle">${s.short}</p>
+    </div>
+    <div class="svc-modal-body">
+      <p class="svc-modal-desc">${s.desc}</p>
+      <h4 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--td);margin-bottom:16px">What's Included</h4>
+      <div class="svc-modal-checks">${checks}</div>
+      <div class="svc-modal-steps">
+        <h4>How It Works</h4>
+        ${steps}
+      </div>
+      <div class="svc-why">
+        <h4>Why Families Choose Us for ${s.tag} Care</h4>
+        <div class="svc-why-grid">${why}</div>
+      </div>
+      <div class="svc-improve">
+        <h4>How We Improve Your Life</h4>
+        <div class="svc-improve-grid">${improve}</div>
+      </div>
+      <div class="svc-modal-actions">
+        <a href="${s.wa}" class="svc-modal-wa" target="_blank">💬 Book via WhatsApp Now</a>
+        <a href="tel:+916383915367" class="svc-modal-call">📞 Call Now</a>
+      </div>
+    </div>`;
+  document.getElementById('svcModal').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('svcModal').classList.remove('show');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+/* SCROLL */
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('sp').style.width=(s/h*100)+'%';
+  document.getElementById('nav').classList.toggle('sc',s>50);
 });
 
-// === SCROLL PROGRESS ===
-window.addEventListener('scroll', () => {
-  const s = document.documentElement.scrollTop;
-  const h = document.documentElement.scrollHeight - window.innerHeight;
-  document.getElementById('scrollProgress').style.width = (s/h*100)+'%';
-  document.getElementById('navbar').classList.toggle('scrolled', s > 50);
-});
+/* POPUP */
+setTimeout(()=>{document.getElementById('popup').classList.add('show')},5000);
+function closePopup(){document.getElementById('popup').classList.remove('show')}
+function submitPopup(){
+  const n=document.getElementById('pop-name').value.trim();
+  const p=document.getElementById('pop-phone').value.trim();
+  const sv=document.getElementById('pop-service').value;
+  if(!n||!p){alert('Please enter your name and phone number.');return;}
+  const txt=`Hi Green Life! I want to book home healthcare.\n\n👤 Name: ${n}\n📞 Phone: ${p}\n🏥 Service: ${sv||'Not specified'}\n\nPlease confirm my appointment. Thank you!`;
+  window.open('https://wa.me/916383915367?text='+encodeURIComponent(txt),'_blank');
+  closePopup();
+}
 
-// === PARTICLES ===
-const pc = document.getElementById('particles');
-for(let i=0;i<20;i++){
+/* MOBILE NAV */
+function toggleNav(){document.getElementById('mnav').classList.toggle('open')}
+function closeMNav(){document.getElementById('mnav').classList.remove('open')}
+
+/* PARTICLES */
+const pc=document.getElementById('particles');
+for(let i=0;i<18;i++){
   const p=document.createElement('div');
   p.className='particle';
-  p.style.left=Math.random()*100+'%';
-  p.style.animationDuration=(8+Math.random()*12)+'s';
-  p.style.animationDelay=(-Math.random()*20)+'s';
-  p.style.width=p.style.height=(4+Math.random()*6)+'px';
-  p.style.opacity=0;
+  p.style.cssText=`left:${Math.random()*100}%;animation-duration:${8+Math.random()*12}s;animation-delay:${-Math.random()*20}s;width:${4+Math.random()*5}px;height:${4+Math.random()*5}px`;
   pc.appendChild(p);
 }
 
-// === ANIMATED TEXT CYCLER ===
-const services=['Nursing Care at Home 🏠','Physiotherapy at Home 🦿','Post Operative Care 🏥','Elderly / Geriatric Care 👴','Pediatric Care 👶','Doctor Visits at Home 🩺','ICU Setup at Home 💊'];
-const tc = document.querySelector('.text-cycle');
-let si=0;
-function cycleText(){
-  si=(si+1)%services.length;
-  tc.innerHTML='<span>'+services[si]+'</span>';
-  tc.style.animation='none';
-  tc.offsetHeight;
-  tc.style.animation='';
-}
-// Simple cycling
+/* TEXT CYCLE */
+const svcs2=['Nursing Care at Home 🏠','Physiotherapy at Home 🦿','Post Operative Care 🏥','Elderly Care 👴','Pediatric Care 👶','Doctor Visits at Home 🩺','ICU Setup at Home 💊','Home Sample Collection 🧪'];
+let si=0;const tc=document.getElementById('tc');
 setInterval(()=>{
-  tc.style.opacity='0';tc.style.transform='translateY(-10px)';tc.style.transition='all 0.4s';
-  setTimeout(()=>{
-    si=(si+1)%services.length;
-    tc.innerHTML='<span style="display:block">'+services[si]+'</span>';
-    tc.style.transform='translateY(10px)';tc.style.transition='none';
-    setTimeout(()=>{ tc.style.opacity='1';tc.style.transform='translateY(0)';tc.style.transition='all 0.4s'; },50);
-  },400);
+  tc.style.cssText='opacity:0;transform:translateY(-10px);transition:all .4s';
+  setTimeout(()=>{si=(si+1)%svcs2.length;tc.textContent=svcs2[si];tc.style.cssText='opacity:0;transform:translateY(12px);transition:none';setTimeout(()=>{tc.style.cssText='opacity:1;transform:translateY(0);transition:all .4s'},50)},400);
 },3000);
 
-// === SCROLL REVEAL ===
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+/* REVEAL */
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>obs.observe(el));
 
-// === COUNTER ANIMATION ===
-function animateCounter(id, target, suffix='') {
-  const el = document.getElementById(id);
-  if(!el) return;
-  let current = 0;
-  const increment = target / 60;
-  const timer = setInterval(() => {
-    current += increment;
-    if(current >= target) { current = target; clearInterval(timer); }
-    el.textContent = Math.floor(current) + suffix;
-  }, 25);
+/* COUNTERS */
+function animC(id,target,suffix=''){
+  const el=document.getElementById(id);if(!el)return;
+  let cur=0;const inc=target/60;
+  const t=setInterval(()=>{cur+=inc;if(cur>=target){cur=target;clearInterval(t)}el.textContent=Math.floor(cur)+suffix},25);
 }
-const statsObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      animateCounter('c1',500);
-      animateCounter('c2',50);
-      animateCounter('c3',38);
-      animateCounter('c4',24);
-      statsObserver.disconnect();
-    }
-  });
-},{threshold:0.3});
-const statsEl = document.querySelector('.stats-bar');
-if(statsEl) statsObserver.observe(statsEl);
+const sObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animC('c1',1000,'+');animC('c2',50,'+');animC('c3',38,'+');animC('c4',24,'+');sObs.disconnect()}})},{threshold:.3});
+const sbEl=document.getElementById('statsBar');if(sbEl)sObs.observe(sbEl);
 
-// === WHATSAPP FORM SUBMIT ===
+/* REVIEWS */
+const reviews=[
+  {name:'Anitha Krishnamurthy',place:'Chennai',text:'The nurses from Green Life were incredibly caring and professional. My mother recovered beautifully at home after her surgery. Highly recommended!',avatar:'👩'},
+  {name:'Rajesh Palani',place:'Coimbatore',text:'Excellent physiotherapy service for my father. The therapist was very knowledgeable and patient. Saw great improvement in just 2 weeks.',avatar:'👨'},
+  {name:'Lakshmi Subramaniam',place:'Madurai',text:'Getting a doctor home visit was so convenient. No need to take my elderly father to hospital. The doctor was thorough and compassionate.',avatar:'👩'},
+  {name:'Murugan Selvam',place:'Salem',text:'ICU setup at home for my wife was a lifesaver. The equipment was hospital-grade and the nurses were available 24/7. Cannot thank Green Life enough.',avatar:'👨'},
+  {name:'Kavitha Raman',place:'Trichy',text:'Post-operative care was excellent. The nurses were gentle, hygienic, and my mother healed faster at home than she would have in a hospital.',avatar:'👩'},
+  {name:'Senthil Kumar',place:'Tirunelveli',text:'Wonderful geriatric care for my grandfather. They handle him with such respect and dignity. The family is very satisfied with Green Life.',avatar:'👴'},
+  {name:'Priya Dhandapani',place:'Erode',text:'Home sample collection was so easy. The lab technician came on time, was professional, and results were shared digitally. Very convenient.',avatar:'👩'},
+  {name:'Vignesh Pandian',place:'Vellore',text:'Called them at 2 AM for an emergency and they responded within 30 minutes. True 24/7 service. Green Life is a blessing for families.',avatar:'👨'},
+];
+function buildReviews(){
+  const t=document.getElementById('rtrack');
+  const all=[...reviews,...reviews];
+  t.innerHTML=all.map(r=>`<div class="rcard"><div class="rstars">★★★★★</div><p class="rtxt">"${r.text}"</p><div class="rinfo"><div class="ravatar">${r.avatar}</div><div><div class="rname">${r.name}</div><div class="rplace">${r.place}, Tamil Nadu</div></div><div class="gbadge">G</div></div></div>`).join('');
+}
+buildReviews();
+
+/* CONTACT FORM */
 function submitForm(){
-  const name = document.getElementById('f-name').value.trim();
-  const phone = document.getElementById('f-phone').value.trim();
-  const service = document.getElementById('f-service').value;
-  const city = document.getElementById('f-city').value.trim();
-  const msg = document.getElementById('f-msg').value.trim();
-  if(!name||!phone){alert('Please enter patient name and phone number.');return;}
-  const text = `Hello Green Life Home Health Care,\n\nI would like to book an appointment.\n\n👤 Patient Name: ${name}\n📞 Phone: ${phone}\n🏥 Service: ${service||'Not specified'}\n📍 City: ${city||'Not specified'}\n📝 Details: ${msg||'Not provided'}\n\nPlease confirm my appointment. Thank you!`;
-  window.open('https://wa.me/916383915367?text='+encodeURIComponent(text),'_blank');
+  const n=document.getElementById('fn').value.trim();
+  const p=document.getElementById('fp').value.trim();
+  const sv=document.getElementById('fsv').value;
+  const c=document.getElementById('fc2').value.trim();
+  const m=document.getElementById('fm').value.trim();
+  if(!n||!p){alert('Please enter patient name and phone number.');return;}
+  const txt=`Hello Green Life Home Health Care,\n\nI would like to book an appointment.\n\n👤 Patient Name: ${n}\n📞 Phone: ${p}\n🏥 Service: ${sv||'Not specified'}\n📍 City: ${c||'Not specified'}\n📝 Details: ${m||'Not provided'}\n\nPlease confirm my appointment. Thank you!`;
+  window.open('https://wa.me/916383915367?text='+encodeURIComponent(txt),'_blank');
 }
-
-// === PARALLAX on scroll ===
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  const hero = document.querySelector('.hero');
-  if(hero) hero.style.backgroundPositionY = (y * 0.3)+'px';
-});
 </script>
 </body>
 </html>
